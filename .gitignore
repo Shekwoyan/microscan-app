@@ -1,0 +1,46 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist-ssr
+*.local
+
+# Ignore the root dist folder if it exists
+/dist/
+
+# Python / Environment
+backend/venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+
+# PyInstaller Output
+backend/build/
+backend/Microscan.spec
+
+# IMPORTANT: We want to push the React frontend files located in backend/dist
+# But we MUST ignore the massive executable folder created by PyInstaller
+!backend/dist/
+backend/dist/Microscan/
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
