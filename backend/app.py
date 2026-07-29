@@ -1,13 +1,20 @@
 import os
 import io
-from flask import Flask, request, jsonify
-from flask_cors import CORS
+import sys
+from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
+from pydantic import BaseModel
 from PIL import Image
+import numpy as np
+
+import os
+# Suppress TF logging
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import keras
 
-from slicer import analyze_smear
-
-import sys
+from preprocess import analyze_smear
 
 # Determine if running in a PyInstaller bundle
 if getattr(sys, 'frozen', False):
@@ -15,12 +22,19 @@ if getattr(sys, 'frozen', False):
 else:
     application_path = os.path.dirname(os.path.abspath(__file__))
 
-static_dir = os.path.join(application_path, 'dist')
-app = Flask(__name__, static_folder=static_dir, static_url_path='/')
-CORS(app)  # Enable CORS for frontend integration
+app = FastAPI(title="Microscan API")
+
+# Enable CORS for frontend integration
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Load the model globally so it's ready for requests
-MODEL_PATH = os.path.join(application_path, 'malaria_model_v1.keras')
+MODEL_PATH = os.path.join(application_path, 'mcnn_mobilenetv2_final_enhanced.keras')
 print(f"Loading model from {MODEL_PATH}...")
 try:
     model = keras.models.load_model(MODEL_PATH)
@@ -28,8 +42,6 @@ try:
 except Exception as e:
     print(f"Error loading model: {e}")
     model = None
-
-import numpy as np
 
 def is_likely_blood_smear(image: Image.Image) -> bool:
     if image.mode != "RGB":
@@ -52,39 +64,53 @@ def is_likely_blood_smear(image: Image.Image) -> bool:
         
     return True
 
-@app.route('/predict-smear', methods=['POST'])
-def predict_smear():
+@app.post("/predict-smear")
+async def predict_smear(image: UploadFile = File(...)):
     if model is None:
-        return jsonify({"error": "Model is not loaded on the server."}), 500
+        raise HTTPException(status_code=500, detail="Model is not loaded on the server.")
         
-    if 'image' not in request.files:
-        return jsonify({"error": "No image part in the request"}), 400
-        
-    file = request.files['image']
-    if file.filename == '':
-        return jsonify({"error": "No selected file"}), 400
+    if not image.filename:
+        raise HTTPException(status_code=400, detail="No selected file")
         
     try:
         # Read the image file using Pillow
-        image_bytes = file.read()
-        image = Image.open(io.BytesIO(image_bytes))
+        image_bytes = await image.read()
+        pil_image = Image.open(io.BytesIO(image_bytes))
         
-        # Run the Hacky Color Gatekeeper
-        if not is_likely_blood_smear(image):
-            return jsonify({"error": "Image rejected: Color profile does not match a Giemsa-stained blood smear."}), 400
+        # Run the Hacky Color Gatekeeper (Optional, can be removed if OpenCV pipeline handles it better)
+        if not is_likely_blood_smear(pil_image):
+            raise HTTPException(status_code=400, detail="Image rejected: Color profile does not match a Giemsa-stained blood smear.")
         
-        # Pass the image to our slicer
-        result = analyze_smear(image, model)
+        # Pass the image to our preprocess and analysis logic
+        result = analyze_smear(pil_image, model)
         
-        return jsonify(result)
+        return JSONResponse(content=result)
         
+    except HTTPException as he:
+        raise he
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        raise HTTPException(status_code=500, detail=str(e))
 
-@app.route('/')
-def index():
-    return app.send_static_file('index.html')
+# Mount the static directory to serve the Vite frontend
+static_dir = os.path.join(application_path, 'dist')
+
+@app.get("/{full_path:path}")
+async def serve_spa(full_path: str):
+    # Check if the requested file exists in the static directory
+    file_path = os.path.join(static_dir, full_path)
+    if os.path.isfile(file_path):
+        from fastapi.responses import FileResponse
+        return FileResponse(file_path)
+        
+    # Fallback to index.html for React SPA routing
+    index_path = os.path.join(static_dir, "index.html")
+    if os.path.isfile(index_path):
+        from fastapi.responses import FileResponse
+        return FileResponse(index_path)
+        
+    raise HTTPException(status_code=404, detail="Not Found")
 
 if __name__ == '__main__':
-    # Run the Flask app on port 5000
-    app.run(debug=True, port=5000)
+    import uvicorn
+    # Run the FastAPI app on port 5000 (matching the old Flask port)
+    uvicorn.run("app:app", host="127.0.0.1", port=5000, reload=True)
