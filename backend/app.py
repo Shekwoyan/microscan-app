@@ -10,8 +10,13 @@ from PIL import Image
 import numpy as np
 
 import os
-# Suppress TF logging
+# Suppress TF logging and configure strict memory bounds for free tier hosting
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+os.environ['CUDA_VISIBLE_DEVICES'] = '-1' # Force CPU
+import tensorflow as tf
+# Limit threading to prevent massive RAM spikes on CPU inference
+tf.config.threading.set_inter_op_parallelism_threads(1)
+tf.config.threading.set_intra_op_parallelism_threads(1)
 import keras
 
 from preprocess import analyze_smear
