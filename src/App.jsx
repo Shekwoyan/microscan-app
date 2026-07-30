@@ -286,11 +286,11 @@ export default function App() {
 
               <div className="max-w-5xl mx-auto px-6 pt-32 pb-28 text-left md:px-16 relative z-10 animate-apple-in" style={{ animationDelay: '100ms' }}>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-950 leading-[1.1] mb-6 max-w-3xl">
-                  Diagnostic-grade AI, <br />right in your pocket.
+                  Smart blood smear analysis. <br />Right in your pocket.
                 </h1>
 
                 <p className="text-base md:text-lg text-gray-500 max-w-2xl font-light leading-relaxed mb-10">
-                  Upload high-magnification microscopy images and receive instant, clinically-aligned insights. Designed to bring state-of-the-art computer vision to any environment, completely offline.
+                  Upload your microscope images and get clear results instantly. Built to work fast, completely offline, and on any device.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
