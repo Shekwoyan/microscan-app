@@ -293,17 +293,17 @@ export default function App() {
                   Upload your microscope images and get clear results instantly. Built to work fast, completely offline, and on any device.
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-5 sm:gap-6 items-center sm:items-center w-full mt-2">
+                <div className="flex flex-col sm:flex-row gap-5 sm:gap-6 items-start sm:items-center mt-2">
                   <button
                     onClick={() => setView('scanner')}
-                    className="w-full sm:w-auto bg-[#1D1D1F] hover:bg-black text-white text-sm font-medium px-8 py-3.5 rounded-full transition-all duration-200 shadow-md hover:shadow-lg active:scale-95 flex justify-center items-center gap-1.5"
+                    className="bg-[#1D1D1F] hover:bg-black text-white text-sm font-medium px-8 py-3.5 rounded-full transition-all duration-200 shadow-md hover:shadow-lg active:scale-95 flex justify-center items-center gap-1.5"
                   >
                     Start Scanner &rarr;
                   </button>
                   <a
                     href="#system-specs"
                     onClick={scrollToArchitecture}
-                    className="w-full sm:w-auto text-sm font-medium text-gray-400 hover:text-gray-900 transition-all duration-200 flex justify-center sm:justify-start items-center gap-1.5 active:scale-95"
+                    className="text-sm font-medium text-gray-400 hover:text-gray-900 transition-all duration-200 flex items-center gap-1.5 active:scale-95 pl-8 sm:pl-0"
                   >
                     See how it works &darr;
                   </a>
