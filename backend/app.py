@@ -96,6 +96,15 @@ async def predict_smear(image: UploadFile = File(...)):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/api/download/model")
+async def download_model():
+    from fastapi.responses import FileResponse
+    return FileResponse(
+        path=MODEL_PATH,
+        filename="mcnn_mobilenetv2_final_enhanced.keras",
+        media_type="application/octet-stream"
+    )
+
 # Mount the static directory to serve the Vite frontend
 static_dir = os.path.join(application_path, 'dist')
 

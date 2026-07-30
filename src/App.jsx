@@ -628,9 +628,9 @@ export default function App() {
                 <p className="text-sm text-gray-500 font-light leading-relaxed mb-8 flex-grow">
                   Download the actual AI model files if you want to use it in your own projects.
                 </p>
-                <button className="w-full bg-[#1D1D1F] hover:bg-red-800 text-white font-medium text-xs rounded-md py-3 transition-colors flex justify-center items-center gap-2">
-                  Download Weights <span className="font-mono text-[10px] opacity-70">14.2MB</span>
-                </button>
+                <a href="/api/download/model" download className="w-full bg-[#1D1D1F] hover:bg-red-800 text-white font-medium text-xs rounded-md py-3 transition-colors flex justify-center items-center gap-2 text-center">
+                  Download Weights <span className="font-mono text-[10px] opacity-70">19.3MB</span>
+                </a>
               </div>
             </div>
           </div>
