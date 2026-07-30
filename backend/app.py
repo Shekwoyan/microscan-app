@@ -112,5 +112,8 @@ async def serve_spa(full_path: str):
 
 if __name__ == '__main__':
     import uvicorn
-    # Run the FastAPI app on port 5000 (matching the old Flask port)
-    uvicorn.run("app:app", host="127.0.0.1", port=5000, reload=True)
+    import os
+    # Dynamically detect Render's assigned port, default to 10000
+    port = int(os.environ.get("PORT", 10000))
+    # Bind to 0.0.0.0 so Render can detect the open port
+    uvicorn.run("app:app", host="0.0.0.0", port=port)
