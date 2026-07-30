@@ -281,27 +281,27 @@ export default function App() {
               />
 
               <div className="max-w-5xl mx-auto px-6 pt-32 pb-28 text-left md:px-16 relative z-10 animate-apple-in" style={{ animationDelay: '100ms' }}>
-                <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-gray-950 leading-[1.1] mb-6 max-w-3xl">
-                  Microscopic Blood Smear <br />Classification Platform.
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-950 leading-[1.1] mb-6 max-w-3xl">
+                  Diagnostic-grade AI, <br />right in your pocket.
                 </h1>
 
-                <p className="text-base md:text-lg text-gray-500 max-w-2xl font-normal leading-relaxed mb-10">
-                  A streamlined computer vision utility engineered to assist technicians with instant, automated cell screening inside resource-constrained environments.
+                <p className="text-base md:text-lg text-gray-500 max-w-2xl font-light leading-relaxed mb-10">
+                  Upload high-magnification microscopy images and receive instant, clinically-aligned insights. Designed to bring state-of-the-art computer vision to any environment, completely offline.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
                   <button
                     onClick={() => setView('scanner')}
-                    className="bg-[#1D1D1F] hover:bg-black text-white text-sm font-medium px-6 py-3 rounded-md transition-all duration-300 shadow-sm"
+                    className="bg-[#1D1D1F] hover:bg-black text-white text-sm font-medium px-8 py-3.5 rounded-full transition-all duration-300 shadow-md hover:shadow-lg"
                   >
-                    Launch Analyzer Engine &rarr;
+                    Start Scanner &rarr;
                   </button>
                   <a
                     href="#system-specs"
                     onClick={(e) => { e.preventDefault(); scrollToArchitecture(); }}
-                    className="text-xs font-medium text-gray-400 hover:text-gray-900 transition-colors duration-200 flex items-center gap-1"
+                    className="text-sm font-medium text-gray-400 hover:text-gray-900 transition-colors duration-200 flex items-center gap-1.5"
                   >
-                    Review Architecture Specs &darr;
+                    See how it works &darr;
                   </a>
                 </div>
               </div>
