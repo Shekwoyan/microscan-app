@@ -6,6 +6,60 @@ export default function App() {
   const [activeCard, setActiveCard] = useState(null); // Tracks the tapped card on mobile
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  // App Processing States
+  const [image, setImage] = useState(null);
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [result, setResult] = useState(null);
+  const [loadingText, setLoadingText] = useState("Scanning Image...");
+
+  useEffect(() => {
+    let interval;
+    if (isProcessing) {
+      const texts = ["Initializing...", "Scanning Image...", "Analyzing Smear..."];
+      let i = 0;
+      setLoadingText(texts[0]);
+      interval = setInterval(() => {
+        i = (i + 1) % texts.length;
+        setLoadingText(texts[i]);
+      }, 800);
+    }
+    return () => clearInterval(interval);
+  }, [isProcessing]);
+
+  const fileInputRef = useRef(null);
+  const architectureSectionRef = useRef(null);
+  const footerRef = useRef(null);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const [isFooterVisible, setIsFooterVisible] = useState(false);
+
+  // Footer Observer for button color inversion
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsFooterVisible(entry.isIntersecting),
+      { threshold: 0 }
+    );
+    // Timeout ensures DOM is mounted, especially if swapping views
+    setTimeout(() => {
+      if (footerRef.current) observer.observe(footerRef.current);
+    }, 100);
+    return () => observer.disconnect();
+  }, [view]);
+
+  // Scroll Event Listener for the Scroll-to-Top Button
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show button when scrolled down 300px
+      if (window.scrollY > 300) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   // Smooth Scroll Helper
   const scrollToArchitecture = (e) => {
     e.preventDefault();
