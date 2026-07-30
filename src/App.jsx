@@ -10,6 +10,21 @@ export default function App() {
   const [image, setImage] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const [result, setResult] = useState(null);
+  const [loadingText, setLoadingText] = useState("Scanning Image...");
+
+  useEffect(() => {
+    let interval;
+    if (isProcessing) {
+      const texts = ["Initializing...", "Scanning Image...", "Analyzing Smear..."];
+      let i = 0;
+      setLoadingText(texts[0]);
+      interval = setInterval(() => {
+        i = (i + 1) % texts.length;
+        setLoadingText(texts[i]);
+      }, 800);
+    }
+    return () => clearInterval(interval);
+  }, [isProcessing]);
 
   const fileInputRef = useRef(null);
   const architectureSectionRef = useRef(null);
@@ -203,7 +218,7 @@ export default function App() {
           {view !== 'landing' && (
             <button
               onClick={() => { resetScanner(); setView('landing'); setIsMobileMenuOpen(false); }}
-              className="flex items-center justify-center p-2 text-gray-600 hover:text-black hover:bg-gray-100 rounded-full transition-all animate-[fadeIn_0.3s_ease-out]"
+              className="hidden md:flex items-center justify-center p-2 text-gray-600 hover:text-black hover:bg-gray-100 rounded-full transition-all animate-[fadeIn_0.3s_ease-out]"
               aria-label="Go back"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -311,15 +326,15 @@ export default function App() {
 
                 <div 
                   onClick={() => setActiveCard(activeCard === 1 ? null : 1)}
-                  className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative scroll-reveal opacity-0 translate-y-16 transition-all duration-500 ease-out ${activeCard === 1 ? 'shadow-xl border-gray-200 scale-[1.03] z-10' : 'hover:shadow-xl hover:border-gray-200 hover:scale-[1.03] hover:z-10'}`} 
+                  className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative scroll-reveal opacity-0 translate-y-16 transition-all duration-500 ease-out select-none ${activeCard === 1 ? 'shadow-xl border-gray-200 scale-[1.03] z-10' : 'md:hover:shadow-xl md:hover:border-gray-200 md:hover:scale-[1.03] md:hover:z-10'}`} 
                   style={{ transitionDelay: '100ms' }}
                 >
                   <span className="text-[10px] font-mono font-bold text-red-500 tracking-wider uppercase block mb-2 transition-colors duration-300">The Brain</span>
-                  <h3 className={`text-base font-bold mb-2 transition-colors duration-300 ${activeCard === 1 ? 'text-red-600' : 'text-gray-900 group-hover:text-red-600'}`}>Smart Image Recognition</h3>
+                  <h3 className={`text-base font-bold mb-2 transition-colors duration-300 ${activeCard === 1 ? 'text-red-600' : 'text-gray-900 md:group-hover:text-red-600'}`}>Smart Image Recognition</h3>
                   <p className="text-sm text-gray-500 font-light leading-relaxed">
                     MCNN uses a lightweight image recognition model to scan and identify cells in your blood smear images accurately and quickly.
                   </p>
-                  <div className={`overflow-hidden transition-all duration-500 ease-in-out ${activeCard === 1 ? 'max-h-40 opacity-100 mt-5' : 'max-h-0 opacity-0 group-hover:max-h-40 group-hover:opacity-100 group-hover:mt-5'}`}>
+                  <div className={`overflow-hidden transition-all duration-500 ease-in-out ${activeCard === 1 ? 'max-h-40 opacity-100 mt-5' : 'max-h-0 opacity-0 md:group-hover:max-h-40 md:group-hover:opacity-100 md:group-hover:mt-5'}`}>
                     <p className="text-xs text-gray-400 font-normal leading-relaxed pt-4 border-t border-gray-100">
                       Behind the scenes, we use an optimized MobileNetV2 architecture that extracts complex visual patterns without requiring heavy computational resources.
                     </p>
@@ -328,15 +343,15 @@ export default function App() {
 
                 <div 
                   onClick={() => setActiveCard(activeCard === 2 ? null : 2)}
-                  className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative flex flex-col h-full scroll-reveal opacity-0 translate-y-16 transition-all duration-500 ease-out ${activeCard === 2 ? 'shadow-xl border-gray-200 scale-[1.03] z-10' : 'hover:shadow-xl hover:border-gray-200 hover:scale-[1.03] hover:z-10'}`} 
+                  className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative flex flex-col h-full scroll-reveal opacity-0 translate-y-16 transition-all duration-500 ease-out select-none ${activeCard === 2 ? 'shadow-xl border-gray-200 scale-[1.03] z-10' : 'md:hover:shadow-xl md:hover:border-gray-200 md:hover:scale-[1.03] md:hover:z-10'}`} 
                   style={{ transitionDelay: '200ms' }}
                 >
                   <span className="text-[10px] font-mono font-bold text-red-500 tracking-wider uppercase block mb-2 transition-colors duration-300">Privacy & Speed</span>
-                  <h3 className={`text-base font-bold mb-2 transition-colors duration-300 ${activeCard === 2 ? 'text-red-600' : 'text-gray-900 group-hover:text-red-600'}`}>Works Completely Offline</h3>
+                  <h3 className={`text-base font-bold mb-2 transition-colors duration-300 ${activeCard === 2 ? 'text-red-600' : 'text-gray-900 md:group-hover:text-red-600'}`}>Works Completely Offline</h3>
                   <p className="text-sm text-gray-500 font-light leading-relaxed">
                     Everything runs directly on your computer or phone. Your data never leaves your device, and you don't even need an internet connection.
                   </p>
-                  <div className={`overflow-hidden transition-all duration-500 ease-in-out ${activeCard === 2 ? 'max-h-40 opacity-100 mt-5' : 'max-h-0 opacity-0 group-hover:max-h-40 group-hover:opacity-100 group-hover:mt-5'}`}>
+                  <div className={`overflow-hidden transition-all duration-500 ease-in-out ${activeCard === 2 ? 'max-h-40 opacity-100 mt-5' : 'max-h-0 opacity-0 md:group-hover:max-h-40 md:group-hover:opacity-100 md:group-hover:mt-5'}`}>
                     <p className="text-xs text-gray-400 font-normal leading-relaxed pt-4 border-t border-gray-100">
                       The trained model is compiled directly into local client-side code using modern browser APIs, ensuring total privacy and instant processing.
                     </p>
@@ -345,15 +360,15 @@ export default function App() {
 
                 <div 
                   onClick={() => setActiveCard(activeCard === 3 ? null : 3)}
-                  className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative flex flex-col h-full scroll-reveal opacity-0 translate-y-16 transition-all duration-500 ease-out ${activeCard === 3 ? 'shadow-xl border-gray-200 scale-[1.03] z-10' : 'hover:shadow-xl hover:border-gray-200 hover:scale-[1.03] hover:z-10'}`} 
+                  className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative flex flex-col h-full scroll-reveal opacity-0 translate-y-16 transition-all duration-500 ease-out select-none ${activeCard === 3 ? 'shadow-xl border-gray-200 scale-[1.03] z-10' : 'md:hover:shadow-xl md:hover:border-gray-200 md:hover:scale-[1.03] md:hover:z-10'}`} 
                   style={{ transitionDelay: '300ms' }}
                 >
                   <span className="text-[10px] font-mono font-bold text-red-500 tracking-wider uppercase block mb-2 transition-colors duration-300">Accessibility</span>
-                  <h3 className={`text-base font-bold mb-2 transition-colors duration-300 ${activeCard === 3 ? 'text-red-600' : 'text-gray-900 group-hover:text-red-600'}`}>Runs on Any Device</h3>
+                  <h3 className={`text-base font-bold mb-2 transition-colors duration-300 ${activeCard === 3 ? 'text-red-600' : 'text-gray-900 md:group-hover:text-red-600'}`}>Runs on Any Device</h3>
                   <p className="text-sm text-gray-500 font-light leading-relaxed">
                     You don't need a supercomputer. MCNN is built to run smoothly on older laptops, tablets, and basic clinic computers.
                   </p>
-                  <div className={`overflow-hidden transition-all duration-500 ease-in-out ${activeCard === 3 ? 'max-h-40 opacity-100 mt-5' : 'max-h-0 opacity-0 group-hover:max-h-40 group-hover:opacity-100 group-hover:mt-5'}`}>
+                  <div className={`overflow-hidden transition-all duration-500 ease-in-out ${activeCard === 3 ? 'max-h-40 opacity-100 mt-5' : 'max-h-0 opacity-0 md:group-hover:max-h-40 md:group-hover:opacity-100 md:group-hover:mt-5'}`}>
                     <p className="text-xs text-gray-400 font-normal leading-relaxed pt-4 border-t border-gray-100">
                       By completely stripping out heavy frameworks and server dependencies, the application footprint remains tiny for flawless execution on low-tier hardware.
                     </p>
@@ -362,15 +377,15 @@ export default function App() {
 
                 <div 
                   onClick={() => setActiveCard(activeCard === 4 ? null : 4)}
-                  className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative flex flex-col h-full scroll-reveal opacity-0 translate-y-16 transition-all duration-500 ease-out ${activeCard === 4 ? 'shadow-xl border-gray-200 scale-[1.03] z-10' : 'hover:shadow-xl hover:border-gray-200 hover:scale-[1.03] hover:z-10'}`} 
+                  className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative flex flex-col h-full scroll-reveal opacity-0 translate-y-16 transition-all duration-500 ease-out select-none ${activeCard === 4 ? 'shadow-xl border-gray-200 scale-[1.03] z-10' : 'md:hover:shadow-xl md:hover:border-gray-200 md:hover:scale-[1.03] md:hover:z-10'}`} 
                   style={{ transitionDelay: '400ms' }}
                 >
                   <span className="text-[10px] font-mono font-bold text-red-500 tracking-wider uppercase block mb-2 transition-colors duration-300">Results</span>
-                  <h3 className={`text-base font-bold mb-2 transition-colors duration-300 ${activeCard === 4 ? 'text-red-600' : 'text-gray-900 group-hover:text-red-600'}`}>Clear, Simple Results</h3>
+                  <h3 className={`text-base font-bold mb-2 transition-colors duration-300 ${activeCard === 4 ? 'text-red-600' : 'text-gray-900 md:group-hover:text-red-600'}`}>Clear, Simple Results</h3>
                   <p className="text-sm text-gray-500 font-light leading-relaxed">
                     Instead of confusing numbers, the system gives you a simple positive or negative result along with how confident it is.
                   </p>
-                  <div className={`overflow-hidden transition-all duration-500 ease-in-out ${activeCard === 4 ? 'max-h-40 opacity-100 mt-5' : 'max-h-0 opacity-0 group-hover:max-h-40 group-hover:opacity-100 group-hover:mt-5'}`}>
+                  <div className={`overflow-hidden transition-all duration-500 ease-in-out ${activeCard === 4 ? 'max-h-40 opacity-100 mt-5' : 'max-h-0 opacity-0 md:group-hover:max-h-40 md:group-hover:opacity-100 md:group-hover:mt-5'}`}>
                     <p className="text-xs text-gray-400 font-normal leading-relaxed pt-4 border-t border-gray-100">
                       The core engine abstracts complex discrete probability arrays into straightforward diagnostic support indicators designed for quick clinical decisions.
                     </p>
@@ -386,7 +401,20 @@ export default function App() {
         {/* VIEW 2: HIGH-END MATCHING SCANNER VIEW (Apple-Inspired)   */}
         {/* ========================================================= */}
         {view === 'scanner' && (
-          <div className="max-w-5xl mx-auto px-6 py-16 md:px-16 animate-apple-in">
+          <div className="max-w-5xl mx-auto px-6 py-6 md:py-16 md:px-16 animate-apple-in">
+
+            {/* Mobile Bold Back Arrow */}
+            <div className="md:hidden mb-6">
+              <button
+                onClick={() => { resetScanner(); setView('landing'); }}
+                className="flex items-center gap-1.5 text-gray-950 font-extrabold text-base tracking-tight hover:text-red-600 transition-colors"
+              >
+                <svg className="w-6 h-6 stroke-[3px]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                BACK
+              </button>
+            </div>
 
             <header className="mb-12">
               <span className="inline-block text-[10px] font-mono tracking-widest font-bold text-teal-600 bg-teal-50 border border-teal-100 px-2.5 py-0.5 rounded mb-3 uppercase">
@@ -434,10 +462,10 @@ export default function App() {
 
                     {/* Apple Style Smooth Spinner Overlay */}
                     {isProcessing && (
-                      <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/40 backdrop-blur-xs transition-opacity duration-300">
+                      <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/60 backdrop-blur-sm transition-opacity duration-300">
                         <div className="w-6 h-6 border-[2.5px] border-gray-200 border-t-[#1D1D1F] rounded-full animate-spin mb-3"></div>
                         <span className="text-[10px] font-mono tracking-wider text-gray-800 uppercase animate-pulse">
-                          Scanning Image...
+                          {loadingText}
                         </span>
                       </div>
                     )}
@@ -525,7 +553,21 @@ export default function App() {
         {/* VIEW 3: DOWNLOADS PAGE                                    */}
         {/* ========================================================= */}
         {view === 'downloads' && (
-          <div className="max-w-6xl mx-auto px-6 py-16 md:px-16 animate-apple-in">
+          <div className="max-w-6xl mx-auto px-6 py-6 md:py-16 md:px-16 animate-apple-in">
+            
+            {/* Mobile Bold Back Arrow */}
+            <div className="md:hidden mb-6">
+              <button
+                onClick={() => { setView('landing'); }}
+                className="flex items-center gap-1.5 text-gray-950 font-extrabold text-base tracking-tight hover:text-red-600 transition-colors"
+              >
+                <svg className="w-6 h-6 stroke-[3px]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                BACK
+              </button>
+            </div>
+
             <header className="mb-12 text-center max-w-2xl mx-auto">
               <span className="inline-block text-[10px] font-mono tracking-widest font-bold text-blue-600 bg-blue-50 border border-blue-100 px-2.5 py-0.5 rounded mb-3 uppercase">
                 Downloads
