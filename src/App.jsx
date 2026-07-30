@@ -15,12 +15,16 @@ export default function App() {
   useEffect(() => {
     let interval;
     if (isProcessing) {
-      const texts = ["Initializing...", "Scanning Image...", "Analyzing Smear..."];
+      const texts = ["Initializing scanner...", "Loading model weights...", "Extracting features...", "Classifying cells...", "Finalizing results..."];
       let i = 0;
       setLoadingText(texts[0]);
       interval = setInterval(() => {
-        i = (i + 1) % texts.length;
-        setLoadingText(texts[i]);
+        i++;
+        if (i < texts.length) {
+          setLoadingText(texts[i]);
+        } else {
+          clearInterval(interval);
+        }
       }, 800);
     }
     return () => clearInterval(interval);
