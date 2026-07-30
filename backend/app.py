@@ -94,7 +94,7 @@ async def predict_smear(image: UploadFile = File(...)):
 # Mount the static directory to serve the Vite frontend
 static_dir = os.path.join(application_path, 'dist')
 
-@app.get("/{full_path:path}")
+@app.api_route("/{full_path:path}", methods=["GET", "HEAD"])
 async def serve_spa(full_path: str):
     # Check if the requested file exists in the static directory
     file_path = os.path.join(static_dir, full_path)
