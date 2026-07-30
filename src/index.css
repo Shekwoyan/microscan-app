@@ -26,6 +26,16 @@ input[type="file"],
   animation: appleFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(4rem);
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @keyframes mosquitoPath {
   0% {
     transform: translate(110vw, 50vh);

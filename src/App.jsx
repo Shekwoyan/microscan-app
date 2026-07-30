@@ -66,13 +66,11 @@ export default function App() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Add visible classes, remove hidden classes
-            entry.target.classList.add('opacity-100', 'translate-y-0');
-            entry.target.classList.remove('opacity-0', 'translate-y-16');
+            // Add visible class
+            entry.target.classList.add('is-visible');
           } else {
-            // Reverse the animation when scrolling back up (or out of view)
-            entry.target.classList.add('opacity-0', 'translate-y-16');
-            entry.target.classList.remove('opacity-100', 'translate-y-0');
+            // Reverse the animation when scrolling back up
+            entry.target.classList.remove('is-visible');
           }
         });
       },
@@ -318,7 +316,7 @@ export default function App() {
               id="system-specs"
               className="max-w-6xl mx-auto px-6 md:px-16 py-20 border-t border-gray-100"
             >
-              <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-gray-400 block mb-12 scroll-reveal opacity-0 translate-y-16 transition-all duration-700 ease-out">
+              <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-gray-400 block mb-12 scroll-reveal transition-all duration-700 ease-out">
                 How It Works
               </span>
 
@@ -326,7 +324,7 @@ export default function App() {
 
                 <div 
                   onClick={() => setActiveCard(activeCard === 1 ? null : 1)}
-                  className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative scroll-reveal opacity-0 translate-y-16 transition-all duration-500 ease-out select-none ${activeCard === 1 ? 'shadow-xl border-gray-200 scale-[1.03] z-10' : 'md:hover:shadow-xl md:hover:border-gray-200 md:hover:scale-[1.03] md:hover:z-10'}`} 
+                  className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative scroll-reveal transition-all duration-500 ease-out select-none ${activeCard === 1 ? 'shadow-xl border-gray-200 scale-[1.03] z-10' : 'md:hover:shadow-xl md:hover:border-gray-200 md:hover:scale-[1.03] md:hover:z-10'}`} 
                   style={{ transitionDelay: '100ms' }}
                 >
                   <span className="text-[10px] font-mono font-bold text-red-500 tracking-wider uppercase block mb-2 transition-colors duration-300">The Brain</span>
@@ -343,7 +341,7 @@ export default function App() {
 
                 <div 
                   onClick={() => setActiveCard(activeCard === 2 ? null : 2)}
-                  className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative flex flex-col h-full scroll-reveal opacity-0 translate-y-16 transition-all duration-500 ease-out select-none ${activeCard === 2 ? 'shadow-xl border-gray-200 scale-[1.03] z-10' : 'md:hover:shadow-xl md:hover:border-gray-200 md:hover:scale-[1.03] md:hover:z-10'}`} 
+                  className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative flex flex-col h-full scroll-reveal transition-all duration-500 ease-out select-none ${activeCard === 2 ? 'shadow-xl border-gray-200 scale-[1.03] z-10' : 'md:hover:shadow-xl md:hover:border-gray-200 md:hover:scale-[1.03] md:hover:z-10'}`} 
                   style={{ transitionDelay: '200ms' }}
                 >
                   <span className="text-[10px] font-mono font-bold text-red-500 tracking-wider uppercase block mb-2 transition-colors duration-300">Privacy & Speed</span>
@@ -360,7 +358,7 @@ export default function App() {
 
                 <div 
                   onClick={() => setActiveCard(activeCard === 3 ? null : 3)}
-                  className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative flex flex-col h-full scroll-reveal opacity-0 translate-y-16 transition-all duration-500 ease-out select-none ${activeCard === 3 ? 'shadow-xl border-gray-200 scale-[1.03] z-10' : 'md:hover:shadow-xl md:hover:border-gray-200 md:hover:scale-[1.03] md:hover:z-10'}`} 
+                  className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative flex flex-col h-full scroll-reveal transition-all duration-500 ease-out select-none ${activeCard === 3 ? 'shadow-xl border-gray-200 scale-[1.03] z-10' : 'md:hover:shadow-xl md:hover:border-gray-200 md:hover:scale-[1.03] md:hover:z-10'}`} 
                   style={{ transitionDelay: '300ms' }}
                 >
                   <span className="text-[10px] font-mono font-bold text-red-500 tracking-wider uppercase block mb-2 transition-colors duration-300">Accessibility</span>
@@ -377,7 +375,7 @@ export default function App() {
 
                 <div 
                   onClick={() => setActiveCard(activeCard === 4 ? null : 4)}
-                  className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative flex flex-col h-full scroll-reveal opacity-0 translate-y-16 transition-all duration-500 ease-out select-none ${activeCard === 4 ? 'shadow-xl border-gray-200 scale-[1.03] z-10' : 'md:hover:shadow-xl md:hover:border-gray-200 md:hover:scale-[1.03] md:hover:z-10'}`} 
+                  className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative flex flex-col h-full scroll-reveal transition-all duration-500 ease-out select-none ${activeCard === 4 ? 'shadow-xl border-gray-200 scale-[1.03] z-10' : 'md:hover:shadow-xl md:hover:border-gray-200 md:hover:scale-[1.03] md:hover:z-10'}`} 
                   style={{ transitionDelay: '400ms' }}
                 >
                   <span className="text-[10px] font-mono font-bold text-red-500 tracking-wider uppercase block mb-2 transition-colors duration-300">Results</span>
