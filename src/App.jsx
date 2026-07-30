@@ -6,86 +6,6 @@ export default function App() {
   const [activeCard, setActiveCard] = useState(null); // Tracks the tapped card on mobile
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // App Processing States
-  const [image, setImage] = useState(null);
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [result, setResult] = useState(null);
-  const [loadingText, setLoadingText] = useState("Scanning Image...");
-
-  useEffect(() => {
-    let interval;
-    if (isProcessing) {
-      const texts = ["Initializing...", "Scanning Image...", "Analyzing Smear..."];
-      let i = 0;
-      setLoadingText(texts[0]);
-      interval = setInterval(() => {
-        i = (i + 1) % texts.length;
-        setLoadingText(texts[i]);
-      }, 800);
-    }
-    return () => clearInterval(interval);
-  }, [isProcessing]);
-
-  const fileInputRef = useRef(null);
-  const architectureSectionRef = useRef(null);
-  const footerRef = useRef(null);
-  const [showScrollTop, setShowScrollTop] = useState(false);
-  const [isFooterVisible, setIsFooterVisible] = useState(false);
-
-  // Footer Observer for button color inversion
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsFooterVisible(entry.isIntersecting),
-      { threshold: 0 }
-    );
-    // Timeout ensures DOM is mounted, especially if swapping views
-    setTimeout(() => {
-      if (footerRef.current) observer.observe(footerRef.current);
-    }, 100);
-    return () => observer.disconnect();
-  }, [view]);
-
-  // Scroll Event Listener for the Scroll-to-Top Button
-  useEffect(() => {
-    const handleScroll = () => {
-      // Show button when scrolled down 300px
-      if (window.scrollY > 300) {
-        setShowScrollTop(true);
-      } else {
-        setShowScrollTop(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Scroll Reveal Observer for staggered animations
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Add visible class
-            entry.target.classList.add('is-visible');
-          } else {
-            // Reverse the animation when scrolling back up
-            entry.target.classList.remove('is-visible');
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -150px 0px' } // Triggers further up so the fade out is clearly visible
-    );
-
-    // Wait for a tiny tick to ensure DOM is rendered before querying
-    setTimeout(() => {
-      const elements = document.querySelectorAll('.scroll-reveal');
-      elements.forEach((el) => observer.observe(el));
-    }, 100);
-
-    return () => observer.disconnect();
-  }, [view]);
-
   // Smooth Scroll Helper
   const scrollToArchitecture = (e) => {
     e.preventDefault();
@@ -316,7 +236,7 @@ export default function App() {
               id="system-specs"
               className="max-w-6xl mx-auto px-6 md:px-16 py-20 border-t border-gray-100"
             >
-              <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-gray-400 block mb-12 scroll-reveal transition-all duration-700 ease-out">
+              <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-gray-400 block mb-12 animate-apple-in">
                 How It Works
               </span>
 
@@ -324,8 +244,8 @@ export default function App() {
 
                 <div 
                   onClick={() => setActiveCard(activeCard === 1 ? null : 1)}
-                  className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative scroll-reveal transition-all duration-500 ease-out select-none ${activeCard === 1 ? 'shadow-xl border-gray-200 scale-[1.03] z-10' : 'md:hover:shadow-xl md:hover:border-gray-200 md:hover:scale-[1.03] md:hover:z-10'}`} 
-                  style={{ transitionDelay: '100ms' }}
+                  className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative animate-apple-in transition-all duration-500 ease-out select-none ${activeCard === 1 ? 'shadow-xl border-gray-200 scale-[1.03] z-10' : 'md:hover:shadow-xl md:hover:border-gray-200 md:hover:scale-[1.03] md:hover:z-10'}`} 
+                  style={{ animationDelay: '100ms' }}
                 >
                   <span className="text-[10px] font-mono font-bold text-red-500 tracking-wider uppercase block mb-2 transition-colors duration-300">The Brain</span>
                   <h3 className={`text-base font-bold mb-2 transition-colors duration-300 ${activeCard === 1 ? 'text-red-600' : 'text-gray-900 md:group-hover:text-red-600'}`}>Smart Image Recognition</h3>
@@ -341,8 +261,8 @@ export default function App() {
 
                 <div 
                   onClick={() => setActiveCard(activeCard === 2 ? null : 2)}
-                  className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative flex flex-col h-full scroll-reveal transition-all duration-500 ease-out select-none ${activeCard === 2 ? 'shadow-xl border-gray-200 scale-[1.03] z-10' : 'md:hover:shadow-xl md:hover:border-gray-200 md:hover:scale-[1.03] md:hover:z-10'}`} 
-                  style={{ transitionDelay: '200ms' }}
+                  className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative flex flex-col h-full animate-apple-in transition-all duration-500 ease-out select-none ${activeCard === 2 ? 'shadow-xl border-gray-200 scale-[1.03] z-10' : 'md:hover:shadow-xl md:hover:border-gray-200 md:hover:scale-[1.03] md:hover:z-10'}`} 
+                  style={{ animationDelay: '200ms' }}
                 >
                   <span className="text-[10px] font-mono font-bold text-red-500 tracking-wider uppercase block mb-2 transition-colors duration-300">Privacy & Speed</span>
                   <h3 className={`text-base font-bold mb-2 transition-colors duration-300 ${activeCard === 2 ? 'text-red-600' : 'text-gray-900 md:group-hover:text-red-600'}`}>Works Completely Offline</h3>
@@ -358,8 +278,8 @@ export default function App() {
 
                 <div 
                   onClick={() => setActiveCard(activeCard === 3 ? null : 3)}
-                  className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative flex flex-col h-full scroll-reveal transition-all duration-500 ease-out select-none ${activeCard === 3 ? 'shadow-xl border-gray-200 scale-[1.03] z-10' : 'md:hover:shadow-xl md:hover:border-gray-200 md:hover:scale-[1.03] md:hover:z-10'}`} 
-                  style={{ transitionDelay: '300ms' }}
+                  className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative flex flex-col h-full animate-apple-in transition-all duration-500 ease-out select-none ${activeCard === 3 ? 'shadow-xl border-gray-200 scale-[1.03] z-10' : 'md:hover:shadow-xl md:hover:border-gray-200 md:hover:scale-[1.03] md:hover:z-10'}`} 
+                  style={{ animationDelay: '300ms' }}
                 >
                   <span className="text-[10px] font-mono font-bold text-red-500 tracking-wider uppercase block mb-2 transition-colors duration-300">Accessibility</span>
                   <h3 className={`text-base font-bold mb-2 transition-colors duration-300 ${activeCard === 3 ? 'text-red-600' : 'text-gray-900 md:group-hover:text-red-600'}`}>Runs on Any Device</h3>
@@ -375,8 +295,8 @@ export default function App() {
 
                 <div 
                   onClick={() => setActiveCard(activeCard === 4 ? null : 4)}
-                  className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative flex flex-col h-full scroll-reveal transition-all duration-500 ease-out select-none ${activeCard === 4 ? 'shadow-xl border-gray-200 scale-[1.03] z-10' : 'md:hover:shadow-xl md:hover:border-gray-200 md:hover:scale-[1.03] md:hover:z-10'}`} 
-                  style={{ transitionDelay: '400ms' }}
+                  className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative flex flex-col h-full animate-apple-in transition-all duration-500 ease-out select-none ${activeCard === 4 ? 'shadow-xl border-gray-200 scale-[1.03] z-10' : 'md:hover:shadow-xl md:hover:border-gray-200 md:hover:scale-[1.03] md:hover:z-10'}`} 
+                  style={{ animationDelay: '400ms' }}
                 >
                   <span className="text-[10px] font-mono font-bold text-red-500 tracking-wider uppercase block mb-2 transition-colors duration-300">Results</span>
                   <h3 className={`text-base font-bold mb-2 transition-colors duration-300 ${activeCard === 4 ? 'text-red-600' : 'text-gray-900 md:group-hover:text-red-600'}`}>Clear, Simple Results</h3>
@@ -401,16 +321,16 @@ export default function App() {
         {view === 'scanner' && (
           <div className="max-w-5xl mx-auto px-6 py-6 md:py-16 md:px-16 animate-apple-in">
 
-            {/* Mobile Bold Back Arrow */}
-            <div className="md:hidden mb-6">
+            {/* Mobile Elegant Back Arrow */}
+            <div className="md:hidden mb-6 -ml-2">
               <button
                 onClick={() => { resetScanner(); setView('landing'); }}
-                className="flex items-center gap-1.5 text-gray-950 font-extrabold text-base tracking-tight hover:text-red-600 transition-colors"
+                className="flex items-center gap-1 text-gray-500 font-medium text-sm hover:text-black transition-colors"
               >
-                <svg className="w-6 h-6 stroke-[3px]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
                 </svg>
-                BACK
+                Back
               </button>
             </div>
 
@@ -553,16 +473,16 @@ export default function App() {
         {view === 'downloads' && (
           <div className="max-w-6xl mx-auto px-6 py-6 md:py-16 md:px-16 animate-apple-in">
             
-            {/* Mobile Bold Back Arrow */}
-            <div className="md:hidden mb-6">
+            {/* Mobile Elegant Back Arrow */}
+            <div className="md:hidden mb-6 -ml-2">
               <button
                 onClick={() => { setView('landing'); }}
-                className="flex items-center gap-1.5 text-gray-950 font-extrabold text-base tracking-tight hover:text-red-600 transition-colors"
+                className="flex items-center gap-1 text-gray-500 font-medium text-sm hover:text-black transition-colors"
               >
-                <svg className="w-6 h-6 stroke-[3px]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
                 </svg>
-                BACK
+                Back
               </button>
             </div>
 
