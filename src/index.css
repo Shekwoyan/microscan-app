@@ -23,12 +23,12 @@ input[type="file"],
 }
 
 .animate-apple-in {
-  animation: appleFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: appleFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .scroll-reveal {
   opacity: 0;
-  transform: translateY(4rem);
+  transform: translateY(2rem);
 }
 
 .scroll-reveal.is-visible {

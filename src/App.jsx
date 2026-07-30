@@ -296,14 +296,14 @@ export default function App() {
                 <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
                   <button
                     onClick={() => setView('scanner')}
-                    className="bg-[#1D1D1F] hover:bg-black text-white text-sm font-medium px-8 py-3.5 rounded-full transition-all duration-300 shadow-md hover:shadow-lg"
+                    className="bg-[#1D1D1F] hover:bg-black text-white text-sm font-medium px-8 py-3.5 rounded-full transition-all duration-200 shadow-md hover:shadow-lg active:scale-95"
                   >
                     Start Scanner &rarr;
                   </button>
                   <a
                     href="#system-specs"
-                    onClick={(e) => { e.preventDefault(); scrollToArchitecture(); }}
-                    className="text-sm font-medium text-gray-400 hover:text-gray-900 transition-colors duration-200 flex items-center gap-1.5"
+                    onClick={scrollToArchitecture}
+                    className="text-sm font-medium text-gray-400 hover:text-gray-900 transition-all duration-200 flex items-center gap-1.5 active:scale-95"
                   >
                     See how it works &darr;
                   </a>
@@ -317,23 +317,23 @@ export default function App() {
               id="system-specs"
               className="max-w-6xl mx-auto px-6 md:px-16 py-20 border-t border-gray-100"
             >
-              <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-gray-400 block mb-12 scroll-reveal transition-all duration-700 ease-out">
+              <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-gray-400 block mb-12 scroll-reveal transition-all duration-500 ease-out">
                 How It Works
               </span>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-                <div className="scroll-reveal transition-all duration-500 ease-out" style={{ transitionDelay: '100ms' }}>
+                <div className="scroll-reveal transition-all duration-300 ease-out" style={{ transitionDelay: '0ms' }}>
                   <div 
                     onClick={() => setActiveCard(activeCard === 1 ? null : 1)}
-                    className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative select-none transition-all duration-300 ${activeCard === 1 ? 'shadow-xl border-gray-200 scale-[1.03] z-10' : 'md:hover:shadow-xl md:hover:border-gray-200 md:hover:scale-[1.03] md:hover:z-10'}`} 
+                    className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative select-none transition-all duration-200 ${activeCard === 1 ? 'shadow-xl border-gray-200 scale-[1.02] z-10' : 'md:hover:shadow-md md:hover:border-gray-200 md:hover:scale-[1.02] md:hover:z-10'}`} 
                   >
-                    <span className="text-[10px] font-mono font-bold text-red-500 tracking-wider uppercase block mb-2 transition-colors duration-300">The Brain</span>
-                    <h3 className={`text-base font-bold mb-2 transition-colors duration-300 ${activeCard === 1 ? 'text-red-600' : 'text-gray-900 md:group-hover:text-red-600'}`}>Smart Image Recognition</h3>
+                    <span className="text-[10px] font-mono font-bold text-red-500 tracking-wider uppercase block mb-2 transition-colors duration-200">The Brain</span>
+                    <h3 className={`text-base font-bold mb-2 transition-colors duration-200 ${activeCard === 1 ? 'text-red-600' : 'text-gray-900 md:group-hover:text-red-600'}`}>Smart Image Recognition</h3>
                     <p className="text-sm text-gray-500 font-light leading-relaxed">
                       MCNN uses a lightweight image recognition model to scan and identify cells in your blood smear images accurately and quickly.
                     </p>
-                    <div className={`overflow-hidden transition-all duration-500 ease-in-out ${activeCard === 1 ? 'max-h-40 opacity-100 mt-5' : 'max-h-0 opacity-0 md:group-hover:max-h-40 md:group-hover:opacity-100 md:group-hover:mt-5'}`}>
+                    <div className={`overflow-hidden transition-all duration-300 ease-in-out ${activeCard === 1 ? 'max-h-40 opacity-100 mt-5' : 'max-h-0 opacity-0 md:group-hover:max-h-40 md:group-hover:opacity-100 md:group-hover:mt-5'}`}>
                       <p className="text-xs text-gray-400 font-normal leading-relaxed pt-4 border-t border-gray-100">
                         Behind the scenes, we use an optimized MobileNetV2 architecture that extracts complex visual patterns without requiring heavy computational resources.
                       </p>
@@ -341,17 +341,17 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="scroll-reveal transition-all duration-500 ease-out flex flex-col h-full" style={{ transitionDelay: '200ms' }}>
+                <div className="scroll-reveal transition-all duration-300 ease-out flex flex-col h-full" style={{ transitionDelay: '50ms' }}>
                   <div 
                     onClick={() => setActiveCard(activeCard === 2 ? null : 2)}
-                    className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative flex flex-col h-full select-none transition-all duration-300 ${activeCard === 2 ? 'shadow-xl border-gray-200 scale-[1.03] z-10' : 'md:hover:shadow-xl md:hover:border-gray-200 md:hover:scale-[1.03] md:hover:z-10'}`} 
+                    className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative flex flex-col h-full select-none transition-all duration-200 ${activeCard === 2 ? 'shadow-xl border-gray-200 scale-[1.02] z-10' : 'md:hover:shadow-md md:hover:border-gray-200 md:hover:scale-[1.02] md:hover:z-10'}`} 
                   >
-                    <span className="text-[10px] font-mono font-bold text-red-500 tracking-wider uppercase block mb-2 transition-colors duration-300">Privacy & Speed</span>
-                    <h3 className={`text-base font-bold mb-2 transition-colors duration-300 ${activeCard === 2 ? 'text-red-600' : 'text-gray-900 md:group-hover:text-red-600'}`}>Works Completely Offline</h3>
+                    <span className="text-[10px] font-mono font-bold text-red-500 tracking-wider uppercase block mb-2 transition-colors duration-200">Privacy & Speed</span>
+                    <h3 className={`text-base font-bold mb-2 transition-colors duration-200 ${activeCard === 2 ? 'text-red-600' : 'text-gray-900 md:group-hover:text-red-600'}`}>Works Completely Offline</h3>
                     <p className="text-sm text-gray-500 font-light leading-relaxed">
                       Everything runs directly on your computer or phone. Your data never leaves your device, and you don't even need an internet connection.
                     </p>
-                    <div className={`overflow-hidden transition-all duration-500 ease-in-out ${activeCard === 2 ? 'max-h-40 opacity-100 mt-5' : 'max-h-0 opacity-0 md:group-hover:max-h-40 md:group-hover:opacity-100 md:group-hover:mt-5'}`}>
+                    <div className={`overflow-hidden transition-all duration-300 ease-in-out ${activeCard === 2 ? 'max-h-40 opacity-100 mt-5' : 'max-h-0 opacity-0 md:group-hover:max-h-40 md:group-hover:opacity-100 md:group-hover:mt-5'}`}>
                       <p className="text-xs text-gray-400 font-normal leading-relaxed pt-4 border-t border-gray-100">
                         The trained model is compiled directly into local client-side code using modern browser APIs, ensuring total privacy and instant processing.
                       </p>
@@ -359,17 +359,17 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="scroll-reveal transition-all duration-500 ease-out flex flex-col h-full" style={{ transitionDelay: '300ms' }}>
+                <div className="scroll-reveal transition-all duration-300 ease-out flex flex-col h-full" style={{ transitionDelay: '100ms' }}>
                   <div 
                     onClick={() => setActiveCard(activeCard === 3 ? null : 3)}
-                    className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative flex flex-col h-full select-none transition-all duration-300 ${activeCard === 3 ? 'shadow-xl border-gray-200 scale-[1.03] z-10' : 'md:hover:shadow-xl md:hover:border-gray-200 md:hover:scale-[1.03] md:hover:z-10'}`} 
+                    className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative flex flex-col h-full select-none transition-all duration-200 ${activeCard === 3 ? 'shadow-xl border-gray-200 scale-[1.02] z-10' : 'md:hover:shadow-md md:hover:border-gray-200 md:hover:scale-[1.02] md:hover:z-10'}`} 
                   >
-                    <span className="text-[10px] font-mono font-bold text-red-500 tracking-wider uppercase block mb-2 transition-colors duration-300">Accessibility</span>
-                    <h3 className={`text-base font-bold mb-2 transition-colors duration-300 ${activeCard === 3 ? 'text-red-600' : 'text-gray-900 md:group-hover:text-red-600'}`}>Runs on Any Device</h3>
+                    <span className="text-[10px] font-mono font-bold text-red-500 tracking-wider uppercase block mb-2 transition-colors duration-200">Accessibility</span>
+                    <h3 className={`text-base font-bold mb-2 transition-colors duration-200 ${activeCard === 3 ? 'text-red-600' : 'text-gray-900 md:group-hover:text-red-600'}`}>Runs on Any Device</h3>
                     <p className="text-sm text-gray-500 font-light leading-relaxed">
                       You don't need a supercomputer. MCNN is built to run smoothly on older laptops, tablets, and basic clinic computers.
                     </p>
-                    <div className={`overflow-hidden transition-all duration-500 ease-in-out ${activeCard === 3 ? 'max-h-40 opacity-100 mt-5' : 'max-h-0 opacity-0 md:group-hover:max-h-40 md:group-hover:opacity-100 md:group-hover:mt-5'}`}>
+                    <div className={`overflow-hidden transition-all duration-300 ease-in-out ${activeCard === 3 ? 'max-h-40 opacity-100 mt-5' : 'max-h-0 opacity-0 md:group-hover:max-h-40 md:group-hover:opacity-100 md:group-hover:mt-5'}`}>
                       <p className="text-xs text-gray-400 font-normal leading-relaxed pt-4 border-t border-gray-100">
                         By completely stripping out heavy frameworks and server dependencies, the application footprint remains tiny for flawless execution on low-tier hardware.
                       </p>
@@ -377,17 +377,17 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="scroll-reveal transition-all duration-500 ease-out flex flex-col h-full" style={{ transitionDelay: '400ms' }}>
+                <div className="scroll-reveal transition-all duration-300 ease-out flex flex-col h-full" style={{ transitionDelay: '150ms' }}>
                   <div 
                     onClick={() => setActiveCard(activeCard === 4 ? null : 4)}
-                    className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative flex flex-col h-full select-none transition-all duration-300 ${activeCard === 4 ? 'shadow-xl border-gray-200 scale-[1.03] z-10' : 'md:hover:shadow-xl md:hover:border-gray-200 md:hover:scale-[1.03] md:hover:z-10'}`} 
+                    className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative flex flex-col h-full select-none transition-all duration-200 ${activeCard === 4 ? 'shadow-xl border-gray-200 scale-[1.02] z-10' : 'md:hover:shadow-md md:hover:border-gray-200 md:hover:scale-[1.02] md:hover:z-10'}`} 
                   >
-                    <span className="text-[10px] font-mono font-bold text-red-500 tracking-wider uppercase block mb-2 transition-colors duration-300">Results</span>
-                    <h3 className={`text-base font-bold mb-2 transition-colors duration-300 ${activeCard === 4 ? 'text-red-600' : 'text-gray-900 md:group-hover:text-red-600'}`}>Clear, Simple Results</h3>
+                    <span className="text-[10px] font-mono font-bold text-red-500 tracking-wider uppercase block mb-2 transition-colors duration-200">Results</span>
+                    <h3 className={`text-base font-bold mb-2 transition-colors duration-200 ${activeCard === 4 ? 'text-red-600' : 'text-gray-900 md:group-hover:text-red-600'}`}>Clear, Simple Results</h3>
                     <p className="text-sm text-gray-500 font-light leading-relaxed">
                       Instead of confusing numbers, the system gives you a simple positive or negative result along with how confident it is.
                     </p>
-                    <div className={`overflow-hidden transition-all duration-500 ease-in-out ${activeCard === 4 ? 'max-h-40 opacity-100 mt-5' : 'max-h-0 opacity-0 md:group-hover:max-h-40 md:group-hover:opacity-100 md:group-hover:mt-5'}`}>
+                    <div className={`overflow-hidden transition-all duration-300 ease-in-out ${activeCard === 4 ? 'max-h-40 opacity-100 mt-5' : 'max-h-0 opacity-0 md:group-hover:max-h-40 md:group-hover:opacity-100 md:group-hover:mt-5'}`}>
                       <p className="text-xs text-gray-400 font-normal leading-relaxed pt-4 border-t border-gray-100">
                         The core engine abstracts complex discrete probability arrays into straightforward diagnostic support indicators designed for quick clinical decisions.
                       </p>
@@ -594,7 +594,7 @@ export default function App() {
                 <p className="text-sm text-gray-500 font-light leading-relaxed mb-8 flex-grow">
                   The full app for Windows laptops and desktop computers.
                 </p>
-                <button className="w-full bg-[#1D1D1F] hover:bg-red-800 text-white font-medium text-xs rounded-md py-3 transition-colors flex justify-center items-center gap-2">
+                <button className="w-full bg-[#1D1D1F] hover:bg-black text-white font-medium text-xs rounded-md py-3 transition-all duration-200 shadow-sm hover:shadow active:scale-95 flex justify-center items-center gap-2">
                   Download Desktop <span className="font-mono text-[10px] opacity-70">145MB</span>
                 </button>
               </div>
@@ -611,7 +611,7 @@ export default function App() {
                 <p className="text-sm text-gray-500 font-light leading-relaxed mb-8 flex-grow">
                   The mobile app designed specifically for Android phones and tablets.
                 </p>
-                <button className="w-full bg-[#1D1D1F] hover:bg-red-800 text-white font-medium text-xs rounded-md py-3 transition-colors flex justify-center items-center gap-2">
+                <button className="w-full bg-[#1D1D1F] hover:bg-black text-white font-medium text-xs rounded-md py-3 transition-all duration-200 shadow-sm hover:shadow active:scale-95 flex justify-center items-center gap-2">
                   Download Mobile <span className="font-mono text-[10px] opacity-70">32MB</span>
                 </button>
               </div>
@@ -628,7 +628,7 @@ export default function App() {
                 <p className="text-sm text-gray-500 font-light leading-relaxed mb-8 flex-grow">
                   Download the actual AI model files if you want to use it in your own projects.
                 </p>
-                <a href="/api/download/model" download className="w-full bg-[#1D1D1F] hover:bg-red-800 text-white font-medium text-xs rounded-md py-3 transition-colors flex justify-center items-center gap-2 text-center">
+                <a href="/api/download/model" download className="w-full bg-[#1D1D1F] hover:bg-black text-white font-medium text-xs rounded-md py-3 transition-all duration-200 shadow-sm hover:shadow active:scale-95 flex justify-center items-center gap-2 text-center">
                   Download Weights <span className="font-mono text-[10px] opacity-70">19.3MB</span>
                 </a>
               </div>
