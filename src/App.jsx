@@ -610,31 +610,49 @@ export default function App() {
               <section className="scroll-reveal">
                 <h2 className="text-xl font-bold mb-6 text-gray-900 border-b border-gray-100 pb-4">How to Use the System</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1 group">
-                    <svg className="w-8 h-8 text-[#1D1D1F] mb-4 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                    </svg>
-                    <h3 className="font-bold text-gray-900 mb-2">1. Prepare the Slide</h3>
-                    <p className="text-sm text-gray-500 leading-relaxed group-hover:text-gray-700 transition-colors">
+                  <div 
+                    onClick={() => setActiveCard(activeCard === 5 ? null : 5)}
+                    className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative flex flex-col items-start h-full select-none transition-all duration-200 ${activeCard === 5 ? 'shadow-xl border-gray-200 scale-[1.02] z-10' : 'md:hover:shadow-md md:hover:border-gray-200 md:hover:scale-[1.02] md:hover:z-10'}`} 
+                  >
+                    <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-6 border transition-colors duration-200 ${activeCard === 5 ? 'bg-red-50 border-red-100 text-red-500' : 'bg-gray-50 border-gray-100 text-gray-800 md:group-hover:bg-red-50 md:group-hover:border-red-100 md:group-hover:text-red-500'}`}>
+                      <svg className="w-5 h-5 transition-transform duration-300 md:group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                      </svg>
+                    </div>
+                    <span className={`text-[10px] font-mono font-bold tracking-wider uppercase block mb-2 transition-colors duration-200 ${activeCard === 5 ? 'text-red-500' : 'text-gray-400 md:group-hover:text-red-500'}`}>Step 1</span>
+                    <h3 className={`text-lg font-bold mb-2 transition-colors duration-200 ${activeCard === 5 ? 'text-red-600' : 'text-gray-900 md:group-hover:text-red-600'}`}>Prepare the Slide</h3>
+                    <p className="text-sm text-gray-500 font-light leading-relaxed flex-grow">
                       Prepare a thin blood smear and stain it using standard Giemsa protocol. The AI expects a bright, properly stained image.
                     </p>
                   </div>
-                  <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1 group">
-                    <svg className="w-8 h-8 text-[#1D1D1F] mb-4 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                    <h3 className="font-bold text-gray-900 mb-2">2. Capture Image</h3>
-                    <p className="text-sm text-gray-500 leading-relaxed group-hover:text-gray-700 transition-colors">
+                  <div 
+                    onClick={() => setActiveCard(activeCard === 6 ? null : 6)}
+                    className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative flex flex-col items-start h-full select-none transition-all duration-200 ${activeCard === 6 ? 'shadow-xl border-gray-200 scale-[1.02] z-10' : 'md:hover:shadow-md md:hover:border-gray-200 md:hover:scale-[1.02] md:hover:z-10'}`} 
+                  >
+                    <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-6 border transition-colors duration-200 ${activeCard === 6 ? 'bg-red-50 border-red-100 text-red-500' : 'bg-gray-50 border-gray-100 text-gray-800 md:group-hover:bg-red-50 md:group-hover:border-red-100 md:group-hover:text-red-500'}`}>
+                      <svg className="w-5 h-5 transition-transform duration-300 md:group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                    </div>
+                    <span className={`text-[10px] font-mono font-bold tracking-wider uppercase block mb-2 transition-colors duration-200 ${activeCard === 6 ? 'text-red-500' : 'text-gray-400 md:group-hover:text-red-500'}`}>Step 2</span>
+                    <h3 className={`text-lg font-bold mb-2 transition-colors duration-200 ${activeCard === 6 ? 'text-red-600' : 'text-gray-900 md:group-hover:text-red-600'}`}>Capture Image</h3>
+                    <p className="text-sm text-gray-500 font-light leading-relaxed flex-grow">
                       Use a microscope with at least 1000x magnification (oil immersion). Snap a clear, well-lit photo of the cell structures.
                     </p>
                   </div>
-                  <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1 group">
-                    <svg className="w-8 h-8 text-[#1D1D1F] mb-4 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
-                    </svg>
-                    <h3 className="font-bold text-gray-900 mb-2">3. Run Analysis</h3>
-                    <p className="text-sm text-gray-500 leading-relaxed group-hover:text-gray-700 transition-colors">
+                  <div 
+                    onClick={() => setActiveCard(activeCard === 7 ? null : 7)}
+                    className={`group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative flex flex-col items-start h-full select-none transition-all duration-200 ${activeCard === 7 ? 'shadow-xl border-gray-200 scale-[1.02] z-10' : 'md:hover:shadow-md md:hover:border-gray-200 md:hover:scale-[1.02] md:hover:z-10'}`} 
+                  >
+                    <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-6 border transition-colors duration-200 ${activeCard === 7 ? 'bg-red-50 border-red-100 text-red-500' : 'bg-gray-50 border-gray-100 text-gray-800 md:group-hover:bg-red-50 md:group-hover:border-red-100 md:group-hover:text-red-500'}`}>
+                      <svg className="w-5 h-5 transition-transform duration-300 md:group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                      </svg>
+                    </div>
+                    <span className={`text-[10px] font-mono font-bold tracking-wider uppercase block mb-2 transition-colors duration-200 ${activeCard === 7 ? 'text-red-500' : 'text-gray-400 md:group-hover:text-red-500'}`}>Step 3</span>
+                    <h3 className={`text-lg font-bold mb-2 transition-colors duration-200 ${activeCard === 7 ? 'text-red-600' : 'text-gray-900 md:group-hover:text-red-600'}`}>Run Analysis</h3>
+                    <p className="text-sm text-gray-500 font-light leading-relaxed flex-grow">
                       Upload the image using the scanner tool. The system will process it locally and return a confidence score instantly.
                     </p>
                   </div>
