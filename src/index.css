@@ -36,50 +36,38 @@ input[type="file"],
   transform: translateY(0);
 }
 
-@keyframes mosquitoFlight {
-  0% { transform: translate(110vw, 15vh) rotate(-180deg); opacity: 0; }
+@keyframes flyX {
+  0% { transform: translateX(110vw); }
+  100% { transform: translateX(15vw); }
+}
+
+@keyframes flyY {
+  0% { transform: translateY(15vh); animation-timing-function: ease-out; }
+  50% { transform: translateY(75vh); animation-timing-function: ease-in; }
+  100% { transform: translateY(15vh); }
+}
+
+@keyframes flyRotate {
+  0% { transform: rotate(-180deg); animation-timing-function: ease-in-out; }
+  50% { transform: rotate(-90deg); animation-timing-function: ease-in-out; }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes flyFade {
+  0% { opacity: 0; }
   5% { opacity: 1; }
-  
-  /* t = 0 deg */
-  12.5% { transform: translate(88vw, 15vh) rotate(-180deg); }
-  
-  /* t = 22.5 deg */
-  23.4% { transform: translate(85.1vw, 36vh) rotate(-164.1deg); }
-  
-  /* t = 45 deg */
-  34.3% { transform: translate(76.8vw, 53.8vh) rotate(-145.4deg); }
-  
-  /* t = 67.5 deg */
-  45.3% { transform: translate(64.5vw, 65.8vh) rotate(-120.9deg); }
-  
-  /* t = 90 deg (Bottom of arc, under the text) */
-  56.2% { transform: translate(50vw, 70vh) rotate(-90deg); }
-  
-  /* t = 112.5 deg */
-  67.1% { transform: translate(35.5vw, 65.8vh) rotate(-59.1deg); }
-  
-  /* t = 135 deg */
-  78.1% { transform: translate(23.2vw, 53.8vh) rotate(-34.6deg); }
-  
-  /* t = 157.5 deg */
-  89% { transform: translate(14.9vw, 36vh) rotate(-15.9deg); }
-  
-  /* t = 180 deg (Landed above the text) */
-  100% { transform: translate(12vw, 15vh) rotate(0deg); opacity: 1; }
+  100% { opacity: 1; }
 }
 
-.animate-mosquito-flight {
-  animation: mosquitoFlight 6s linear forwards;
+.animate-fly-x {
+  animation: flyX 5s ease-in-out forwards;
 }
-
-@keyframes buzz {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  25% { transform: translate(1px, -1px) rotate(3deg); }
-  50% { transform: translate(-1px, 1px) rotate(-3deg); }
-  75% { transform: translate(-2px, -1px) rotate(1deg); }
+.animate-fly-y {
+  animation: flyY 5s forwards;
 }
-
-.animate-buzz-stop {
-  /* 5 seconds at 0.05s per loop = 100 iterations */
-  animation: buzz 0.05s 100 forwards;
+.animate-fly-rotate {
+  animation: flyRotate 5s forwards;
+}
+.animate-fly-fade {
+  animation: flyFade 5s forwards;
 }

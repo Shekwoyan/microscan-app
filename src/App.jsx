@@ -273,22 +273,28 @@ export default function App() {
 
             {/* The Mosquito Animation */}
             <div className="absolute inset-0 pointer-events-none z-20 overflow-hidden">
-              <div className="animate-mosquito-flight absolute top-0 left-0">
-                <svg className="w-10 h-10 text-gray-800 drop-shadow-md" viewBox="0 0 64 64" fill="currentColor">
-                  {/* Proboscis */}
-                  <path d="M32 10V2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                  {/* Head */}
-                  <circle cx="32" cy="14" r="4" />
-                  {/* Body */}
-                  <path d="M32 18c-3 0-5 6-5 14s2 18 5 18 5-10 5-18-2-14-5-14z" />
-                  {/* Wings (semi-transparent) */}
-                  <path d="M28 26C14 16 2 22 6 34c2.5 7.5 14 2 22-5z" opacity="0.5" />
-                  <path d="M36 26c14-10 26-4 22 8-2.5 7.5-14 2-22-5z" opacity="0.5" />
-                  {/* Left Legs */}
-                  <path d="M27 22l-12-8m12 12l-14 2m13 10l-10 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
-                  {/* Right Legs */}
-                  <path d="M37 22l12-8m-12 12l14 2m-13 10l10 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
-                </svg>
+              <div className="animate-fly-fade absolute top-0 left-0 w-full h-full">
+                <div className="animate-fly-x absolute top-0 left-0 w-full h-full">
+                  <div className="animate-fly-y absolute top-0 left-0 w-full h-full">
+                    <div className="animate-fly-rotate absolute top-0 left-0 w-full h-full flex items-start justify-start">
+                      <svg className="w-10 h-10 text-gray-800 drop-shadow-md -ml-5 -mt-5" viewBox="0 0 64 64" fill="currentColor">
+                        {/* Proboscis */}
+                        <path d="M32 10V2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                        {/* Head */}
+                        <circle cx="32" cy="14" r="4" />
+                        {/* Body */}
+                        <path d="M32 18c-3 0-5 6-5 14s2 18 5 18 5-10 5-18-2-14-5-14z" />
+                        {/* Wings (semi-transparent) */}
+                        <path d="M28 26C14 16 2 22 6 34c2.5 7.5 14 2 22-5z" opacity="0.5" />
+                        <path d="M36 26c14-10 26-4 22 8-2.5 7.5-14 2-22-5z" opacity="0.5" />
+                        {/* Left Legs */}
+                        <path d="M27 22l-12-8m12 12l-14 2m13 10l-10 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
+                        {/* Right Legs */}
+                        <path d="M37 22l12-8m-12 12l14 2m-13 10l10 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
