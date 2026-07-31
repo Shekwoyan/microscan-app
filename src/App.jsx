@@ -620,7 +620,7 @@ export default function App() {
                 <div className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-6 md:grid md:grid-cols-3 md:gap-8 pb-8 -mx-6 px-6 md:mx-0 md:px-0 md:pb-0" onScroll={handleInstructionScroll}>
                   <div 
                     onClick={() => setActiveCard(activeCard === 5 ? null : 5)}
-                    className={`w-[75vw] shrink-0 snap-center md:w-auto group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative flex flex-col items-start h-64 select-none transition-all duration-200 ${activeCard === 5 ? 'shadow-xl border-gray-200 scale-105 z-10' : 'md:hover:shadow-md md:hover:border-gray-200 md:hover:scale-105 md:hover:z-10'}`} 
+                    className={`w-[75vw] shrink-0 snap-center md:w-auto group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative flex flex-col items-start h-80 select-none transition-all duration-200 ${activeCard === 5 ? 'shadow-xl border-gray-200 scale-105 z-10' : 'md:hover:shadow-md md:hover:border-gray-200 md:hover:scale-105 md:hover:z-10'}`} 
                   >
                     <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-6 border transition-colors duration-200 ${activeCard === 5 ? 'bg-red-50 border-red-100 text-red-500' : 'bg-gray-50 border-gray-100 text-gray-800 md:group-hover:bg-red-50 md:group-hover:border-red-100 md:group-hover:text-red-500'}`}>
                       <svg className="w-5 h-5 transition-transform duration-300 md:group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -635,7 +635,7 @@ export default function App() {
                   </div>
                   <div 
                     onClick={() => setActiveCard(activeCard === 6 ? null : 6)}
-                    className={`w-[75vw] shrink-0 snap-center md:w-auto group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative flex flex-col items-start h-64 select-none transition-all duration-200 ${activeCard === 6 ? 'shadow-xl border-gray-200 scale-105 z-10' : 'md:hover:shadow-md md:hover:border-gray-200 md:hover:scale-105 md:hover:z-10'}`} 
+                    className={`w-[75vw] shrink-0 snap-center md:w-auto group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative flex flex-col items-start h-80 select-none transition-all duration-200 ${activeCard === 6 ? 'shadow-xl border-gray-200 scale-105 z-10' : 'md:hover:shadow-md md:hover:border-gray-200 md:hover:scale-105 md:hover:z-10'}`} 
                   >
                     <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-6 border transition-colors duration-200 ${activeCard === 6 ? 'bg-red-50 border-red-100 text-red-500' : 'bg-gray-50 border-gray-100 text-gray-800 md:group-hover:bg-red-50 md:group-hover:border-red-100 md:group-hover:text-red-500'}`}>
                       <svg className="w-5 h-5 transition-transform duration-300 md:group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -651,7 +651,7 @@ export default function App() {
                   </div>
                   <div 
                     onClick={() => setActiveCard(activeCard === 7 ? null : 7)}
-                    className={`w-[75vw] shrink-0 snap-center md:w-auto group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative flex flex-col items-start h-64 select-none transition-all duration-200 ${activeCard === 7 ? 'shadow-xl border-gray-200 scale-105 z-10' : 'md:hover:shadow-md md:hover:border-gray-200 md:hover:scale-105 md:hover:z-10'}`} 
+                    className={`w-[75vw] shrink-0 snap-center md:w-auto group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative flex flex-col items-start h-80 select-none transition-all duration-200 ${activeCard === 7 ? 'shadow-xl border-gray-200 scale-105 z-10' : 'md:hover:shadow-md md:hover:border-gray-200 md:hover:scale-105 md:hover:z-10'}`} 
                   >
                     <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-6 border transition-colors duration-200 ${activeCard === 7 ? 'bg-red-50 border-red-100 text-red-500' : 'bg-gray-50 border-gray-100 text-gray-800 md:group-hover:bg-red-50 md:group-hover:border-red-100 md:group-hover:text-red-500'}`}>
                       <svg className="w-5 h-5 transition-transform duration-300 md:group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
