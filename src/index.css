@@ -38,21 +38,21 @@ input[type="file"],
   transform: translateY(0);
 }
 
-@keyframes flyX {
-  0% { transform: translateX(110vw); }
-  100% { transform: translateX(15vw); }
+@keyframes flyXLeft {
+  0% { transform: translateX(-50vw); }
+  100% { transform: translateX(0); }
 }
 
-@keyframes flyY {
-  0% { transform: translateY(15vh); animation-timing-function: ease-out; }
-  50% { transform: translateY(75vh); animation-timing-function: ease-in; }
-  100% { transform: translateY(15vh); }
+@keyframes flyYArc {
+  0% { transform: translateY(0); animation-timing-function: ease-out; }
+  50% { transform: translateY(25vh); animation-timing-function: ease-in-out; }
+  100% { transform: translateY(0); }
 }
 
-@keyframes flyRotate {
-  0% { transform: rotate(-180deg); animation-timing-function: ease-in-out; }
-  50% { transform: rotate(-90deg); animation-timing-function: ease-in-out; }
-  100% { transform: rotate(0deg); }
+@keyframes flyRotateLeft {
+  0% { transform: rotate(90deg); }
+  50% { transform: rotate(30deg); }
+  100% { transform: rotate(15deg); }
 }
 
 @keyframes flyFade {
@@ -61,15 +61,6 @@ input[type="file"],
   100% { opacity: 1; }
 }
 
-.animate-fly-x {
-  animation: flyX 5s ease-in-out forwards;
-}
-.animate-fly-y {
-  animation: flyY 5s forwards;
-}
-.animate-fly-rotate {
-  animation: flyRotate 5s forwards;
-}
 .animate-fly-fade {
   animation: flyFade 5s forwards;
 }
