@@ -608,7 +608,15 @@ export default function App() {
             <div className="space-y-16">
               {/* How to use */}
               <section className="scroll-reveal">
-                <h2 className="text-xl font-bold mb-6 text-gray-900 border-b border-gray-100 pb-4">How to Use the System</h2>
+                <div className="flex items-center justify-between border-b border-gray-100 pb-4 mb-6">
+                  <h2 className="text-xl font-bold text-gray-900">How to Use the System</h2>
+                  <div className="flex items-center gap-1.5 text-gray-400 md:hidden animate-pulse">
+                    <span className="text-[10px] font-mono font-bold tracking-widest uppercase">Swipe</span>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </div>
+                </div>
                 <div className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-6 md:grid md:grid-cols-3 md:gap-8 pb-8 -mx-6 px-6 md:mx-0 md:px-0 md:pb-0">
                   <div 
                     onClick={() => setActiveCard(activeCard === 5 ? null : 5)}
