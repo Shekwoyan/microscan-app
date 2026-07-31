@@ -183,9 +183,9 @@ export default function App() {
         >
           <div className="relative w-6 h-6 flex items-center justify-center">
             <div className="animate-fly-fade absolute">
-              <div className="animate-[flyXLeft_2.5s_ease-out_forwards]">
+              <div className="animate-[flyXRight_2.5s_ease-out_forwards]">
                 <div className="animate-[flyYArc_2.5s_forwards]">
-                  <div className="animate-[flyRotateLeft_2.5s_forwards]">
+                  <div className="animate-[flyRotateRight_2.5s_forwards]">
                     <svg className="w-6 h-6 text-[#1D1D1F] transition-transform duration-300 group-hover:scale-110 drop-shadow-sm" viewBox="0 0 64 64" fill="currentColor">
                       <path d="M32 10V2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                       <circle cx="32" cy="14" r="4" />

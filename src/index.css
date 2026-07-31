@@ -38,8 +38,8 @@ input[type="file"],
   transform: translateY(0);
 }
 
-@keyframes flyXLeft {
-  0% { transform: translateX(-50vw); }
+@keyframes flyXRight {
+  0% { transform: translateX(100vw); }
   100% { transform: translateX(0); }
 }
 
@@ -49,9 +49,9 @@ input[type="file"],
   100% { transform: translateY(0); }
 }
 
-@keyframes flyRotateLeft {
-  0% { transform: rotate(90deg); }
-  50% { transform: rotate(30deg); }
+@keyframes flyRotateRight {
+  0% { transform: rotate(-100deg); }
+  50% { transform: rotate(-45deg); }
   100% { transform: rotate(0deg); }
 }
 
