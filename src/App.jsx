@@ -271,6 +271,18 @@ export default function App() {
         {view === 'landing' && (
           <div className="animate-apple-in">
 
+            {/* The Mosquito Animation */}
+            <div className="absolute inset-0 pointer-events-none z-20 overflow-hidden">
+              <div className="animate-mosquito-flight absolute top-0 left-0">
+                <div className="animate-buzz-stop">
+                  <svg className="w-6 h-6 text-gray-800 drop-shadow-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 4v4m0 8v4M7 8l2 2m6 4l2 2M5 12h3m8 0h3M7 16l2-2m6-4l2-2" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
             {/* Hero Core Segment */}
             <section className="relative w-full overflow-hidden">
               {/* Subtle Antigravity Background Pattern */}
