@@ -37,38 +37,35 @@ input[type="file"],
 }
 
 @keyframes mosquitoFlight {
-  0% { transform: translate(110vw, 22vh) rotate(-90deg); opacity: 0; }
+  0% { transform: translate(110vw, 15vh) rotate(-180deg); opacity: 0; }
   5% { opacity: 1; }
   
-  /* Enter loop at Top (moving left) */
-  20% { transform: translate(50vw, 22vh) rotate(-90deg); }
+  /* t = 0 deg */
+  12.5% { transform: translate(88vw, 15vh) rotate(-180deg); }
   
-  /* Top-Left */
-  28% { transform: translate(41vw, 27vh) rotate(-135deg); }
+  /* t = 22.5 deg */
+  23.4% { transform: translate(85.1vw, 36vh) rotate(-164.1deg); }
   
-  /* Left (moving down) */
-  37% { transform: translate(38vw, 40vh) rotate(-180deg); }
+  /* t = 45 deg */
+  34.3% { transform: translate(76.8vw, 53.8vh) rotate(-145.4deg); }
   
-  /* Bottom-Left */
-  46% { transform: translate(41vw, 53vh) rotate(-225deg); }
+  /* t = 67.5 deg */
+  45.3% { transform: translate(64.5vw, 65.8vh) rotate(-120.9deg); }
   
-  /* Bottom (moving right) */
-  55% { transform: translate(50vw, 58vh) rotate(-270deg); }
+  /* t = 90 deg (Bottom of arc, under the text) */
+  56.2% { transform: translate(50vw, 70vh) rotate(-90deg); }
   
-  /* Bottom-Right */
-  64% { transform: translate(59vw, 53vh) rotate(-315deg); }
+  /* t = 112.5 deg */
+  67.1% { transform: translate(35.5vw, 65.8vh) rotate(-59.1deg); }
   
-  /* Right (moving up) */
-  73% { transform: translate(62vw, 40vh) rotate(-360deg); }
+  /* t = 135 deg */
+  78.1% { transform: translate(23.2vw, 53.8vh) rotate(-34.6deg); }
   
-  /* Top-Right */
-  82% { transform: translate(59vw, 27vh) rotate(-405deg); }
+  /* t = 157.5 deg */
+  89% { transform: translate(14.9vw, 36vh) rotate(-15.9deg); }
   
-  /* Top (Loop complete, moving left) */
-  90% { transform: translate(50vw, 22vh) rotate(-450deg); }
-  
-  /* Final landing approach (left and slightly down) */
-  100% { transform: translate(15vw, 32vh) rotate(-460deg); opacity: 1; }
+  /* t = 180 deg (Landed above the text) */
+  100% { transform: translate(12vw, 15vh) rotate(0deg); opacity: 1; }
 }
 
 .animate-mosquito-flight {
