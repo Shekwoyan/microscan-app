@@ -182,6 +182,13 @@ export default function App() {
         {/* Center: Centralized Navigation Items */}
         <div className="hidden md:flex items-center gap-10 text-xs font-medium text-gray-500">
           <a
+            href="#instructions"
+            onClick={(e) => { e.preventDefault(); setView('instructions'); }}
+            className="hover:text-black transition-colors duration-200"
+          >
+            Instructions
+          </a>
+          <a
             href="#system-specs"
             onClick={scrollToArchitecture}
             className="hover:text-black transition-colors duration-200"
@@ -241,7 +248,14 @@ export default function App() {
         </div>
 
         {/* Mobile Dropdown Menu */}
-        <div className={`absolute top-full left-0 w-full bg-[#FBFBFD]/95 backdrop-blur-md border-b border-gray-100 transition-all duration-300 md:hidden overflow-hidden flex flex-col items-center shadow-sm ${isMobileMenuOpen ? 'max-h-48 py-5 opacity-100' : 'max-h-0 py-0 opacity-0 pointer-events-none'}`}>
+        <div className={`absolute top-full left-0 w-full bg-[#FBFBFD]/95 backdrop-blur-md border-b border-gray-100 transition-all duration-300 md:hidden overflow-hidden flex flex-col items-center shadow-sm ${isMobileMenuOpen ? 'max-h-56 py-5 opacity-100' : 'max-h-0 py-0 opacity-0 pointer-events-none'}`}>
+          <a
+            href="#instructions"
+            onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); setView('instructions'); }}
+            className="hover:text-black text-sm font-medium text-gray-600 transition-colors duration-200 mb-4"
+          >
+            Instructions
+          </a>
           <a
             href="#system-specs"
             onClick={(e) => { setIsMobileMenuOpen(false); scrollToArchitecture(e); }}
@@ -581,6 +595,106 @@ export default function App() {
 
         {/* ========================================================= */}
         {/* VIEW 3: DOWNLOADS PAGE                                    */}
+        {/* ========================================================= */}
+        {view === 'instructions' && (
+          <div className="flex-1 max-w-4xl mx-auto w-full px-6 py-24 md:px-16 animate-apple-in">
+            <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-gray-900 mb-6">
+              Instructions & System Capabilities
+            </h1>
+            <p className="text-base text-gray-500 font-light mb-16 max-w-2xl leading-relaxed">
+              Before using the Microscan diagnostic system, please review how to properly format your images and understand the operational limits of the AI.
+            </p>
+
+            <div className="space-y-16">
+              {/* How to use */}
+              <section className="scroll-reveal">
+                <h2 className="text-xl font-bold mb-6 text-gray-900 border-b border-gray-100 pb-4">How to Use the System</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+                    <span className="text-3xl mb-4 block">🔬</span>
+                    <h3 className="font-bold text-gray-900 mb-2">1. Prepare the Slide</h3>
+                    <p className="text-sm text-gray-500 leading-relaxed">
+                      Prepare a thin blood smear and stain it using standard Giemsa protocol. The AI expects a bright, properly stained image.
+                    </p>
+                  </div>
+                  <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+                    <span className="text-3xl mb-4 block">📸</span>
+                    <h3 className="font-bold text-gray-900 mb-2">2. Capture Image</h3>
+                    <p className="text-sm text-gray-500 leading-relaxed">
+                      Use a microscope with at least 1000x magnification (oil immersion). Snap a clear, well-lit photo of the cell structures.
+                    </p>
+                  </div>
+                  <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+                    <span className="text-3xl mb-4 block">🧠</span>
+                    <h3 className="font-bold text-gray-900 mb-2">3. Run Analysis</h3>
+                    <p className="text-sm text-gray-500 leading-relaxed">
+                      Upload the image using the scanner tool. The system will process it locally and return a confidence score instantly.
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                {/* Strengths */}
+                <section className="scroll-reveal">
+                  <h2 className="text-xl font-bold mb-6 text-gray-900 border-b border-gray-100 pb-4">System Strengths</h2>
+                  <ul className="space-y-4">
+                    <li className="flex gap-3">
+                      <svg className="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
+                      <div>
+                        <span className="block font-medium text-gray-900 text-sm mb-1">Completely Offline</span>
+                        <span className="block text-sm text-gray-500">The entire inference engine runs locally, making it ideal for remote clinics with no internet.</span>
+                      </div>
+                    </li>
+                    <li className="flex gap-3">
+                      <svg className="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
+                      <div>
+                        <span className="block font-medium text-gray-900 text-sm mb-1">Privacy First</span>
+                        <span className="block text-sm text-gray-500">No patient images are ever stored or sent to a remote server.</span>
+                      </div>
+                    </li>
+                    <li className="flex gap-3">
+                      <svg className="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
+                      <div>
+                        <span className="block font-medium text-gray-900 text-sm mb-1">High Speed</span>
+                        <span className="block text-sm text-gray-500">The optimized backbone provides near-instant results even on low-end hardware.</span>
+                      </div>
+                    </li>
+                  </ul>
+                </section>
+
+                {/* Weaknesses */}
+                <section className="scroll-reveal">
+                  <h2 className="text-xl font-bold mb-6 text-gray-900 border-b border-gray-100 pb-4">System Limitations</h2>
+                  <ul className="space-y-4">
+                    <li className="flex gap-3">
+                      <svg className="w-5 h-5 text-red-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                      <div>
+                        <span className="block font-medium text-gray-900 text-sm mb-1">Not a Definitive Diagnosis</span>
+                        <span className="block text-sm text-gray-500">This is a screening tool. It does not replace the professional judgment of a trained microscopist.</span>
+                      </div>
+                    </li>
+                    <li className="flex gap-3">
+                      <svg className="w-5 h-5 text-red-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                      <div>
+                        <span className="block font-medium text-gray-900 text-sm mb-1">Requires High Magnification</span>
+                        <span className="block text-sm text-gray-500">The model was trained on 1000x oil-immersion images. Lower magnifications will result in poor accuracy.</span>
+                      </div>
+                    </li>
+                    <li className="flex gap-3">
+                      <svg className="w-5 h-5 text-red-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                      <div>
+                        <span className="block font-medium text-gray-900 text-sm mb-1">Color Sensitivity</span>
+                        <span className="block text-sm text-gray-500">Poorly stained slides or improper white balance on the camera can confuse the color gatekeeper.</span>
+                      </div>
+                    </li>
+                  </ul>
+                </section>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* ========================================================= */}
         {view === 'downloads' && (
           <div className="max-w-6xl mx-auto px-6 py-6 md:py-16 md:px-16 animate-apple-in">
