@@ -18,7 +18,6 @@ The project is split into two primary components to maintain a lightweight footp
 ### 2. Backend (Python + Flask)
 - **Framework:** Flask web server running completely locally (100% zero-connectivity runtime support).
 - **Core Engine:** TensorFlow & Keras 3.
-- **Image Processor (`slicer.py`):** Acts as a digital paper cutter. It chops large, high-resolution microscope slides into a strict grid of `224x224` pixel patches. It then utilizes **Batch Prediction** to feed these patches into the AI model simultaneously for maximum GPU/CPU efficiency.
 
 ---
 
