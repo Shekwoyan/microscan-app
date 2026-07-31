@@ -36,31 +36,43 @@ input[type="file"],
   transform: translateY(0);
 }
 
-@keyframes mosquitoPath {
-  0% {
-    transform: translate(110vw, 50vh);
-    opacity: 0;
-  }
-  5% {
-    opacity: 1;
-  }
-  100% {
-    transform: translate(130px, 20px);
-    opacity: 1;
-  }
+@keyframes mosquitoFlight {
+  0% { transform: translate(110vw, 22vh) rotate(-90deg); opacity: 0; }
+  5% { opacity: 1; }
+  
+  /* Enter loop at Top (moving left) */
+  20% { transform: translate(50vw, 22vh) rotate(-90deg); }
+  
+  /* Top-Left */
+  28% { transform: translate(41vw, 27vh) rotate(-135deg); }
+  
+  /* Left (moving down) */
+  37% { transform: translate(38vw, 40vh) rotate(-180deg); }
+  
+  /* Bottom-Left */
+  46% { transform: translate(41vw, 53vh) rotate(-225deg); }
+  
+  /* Bottom (moving right) */
+  55% { transform: translate(50vw, 58vh) rotate(-270deg); }
+  
+  /* Bottom-Right */
+  64% { transform: translate(59vw, 53vh) rotate(-315deg); }
+  
+  /* Right (moving up) */
+  73% { transform: translate(62vw, 40vh) rotate(-360deg); }
+  
+  /* Top-Right */
+  82% { transform: translate(59vw, 27vh) rotate(-405deg); }
+  
+  /* Top (Loop complete, moving left) */
+  90% { transform: translate(50vw, 22vh) rotate(-450deg); }
+  
+  /* Final landing approach (left and slightly down) */
+  100% { transform: translate(15vw, 32vh) rotate(-460deg); opacity: 1; }
 }
 
-.animate-mosquito-path {
-  animation: mosquitoPath 8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-}
-
-@keyframes perfectCircle {
-  0% { transform: rotate(0deg) translateX(100px) rotate(-90deg); }
-  100% { transform: rotate(-1440deg) translateX(0px) rotate(-90deg); }
-}
-
-.animate-perfect-circle {
-  animation: perfectCircle 8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+.animate-mosquito-flight {
+  animation: mosquitoFlight 6s linear forwards;
 }
 
 @keyframes buzz {
@@ -70,6 +82,7 @@ input[type="file"],
   75% { transform: translate(-2px, -1px) rotate(1deg); }
 }
 
-.animate-buzz {
-  animation: buzz 0.05s infinite;
+.animate-buzz-stop {
+  /* 5 seconds at 0.05s per loop = 100 iterations */
+  animation: buzz 0.05s 100 forwards;
 }
