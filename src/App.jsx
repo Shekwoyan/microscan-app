@@ -181,9 +181,25 @@ export default function App() {
           onClick={() => setView('landing')}
           className="flex items-center gap-2.5 cursor-pointer group text-[#1D1D1F]"
         >
-          <svg className="w-5 h-5 text-[#1D1D1F] transition-transform duration-300 group-hover:scale-105" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v1m0 11v3m0-11a4 4 0 110 8 4 4 0 010-8zm0 0v3m-3-3h6m-6 3h6m-6 3h6M5 21h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2z" />
-          </svg>
+          <div className="relative w-6 h-6 flex items-center justify-center">
+            <div className="animate-fly-fade absolute">
+              <div className="animate-[flyXLeft_2.5s_ease-out_forwards]">
+                <div className="animate-[flyYArc_2.5s_forwards]">
+                  <div className="animate-[flyRotateLeft_2.5s_forwards]">
+                    <svg className="w-6 h-6 text-[#1D1D1F] transition-transform duration-300 group-hover:scale-110 drop-shadow-sm" viewBox="0 0 64 64" fill="currentColor">
+                      <path d="M32 10V2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                      <circle cx="32" cy="14" r="4" />
+                      <path d="M32 18c-3 0-5 6-5 14s2 18 5 18 5-10 5-18-2-14-5-14z" />
+                      <path d="M28 26C14 16 2 22 6 34c2.5 7.5 14 2 22-5z" opacity="0.5" />
+                      <path d="M36 26c14-10 26-4 22 8-2.5 7.5-14 2-22-5z" opacity="0.5" />
+                      <path d="M27 22l-12-8m12 12l-14 2m13 10l-10 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
+                      <path d="M37 22l12-8m-12 12l14 2m-13 10l10 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <span className="text-xs font-mono font-bold tracking-widest uppercase">MCNN</span>
         </div>
 
@@ -308,28 +324,7 @@ export default function App() {
 
               <div className="max-w-5xl mx-auto px-6 pt-32 pb-28 text-left md:px-16 relative z-10 animate-apple-in" style={{ animationDelay: '100ms' }}>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-950 leading-[1.1] mb-6 max-w-3xl">
-                  Smart blood smear analys<span className="relative inline-block">i
-                    {/* The Mosquito Animation */}
-                    <div className="absolute left-1/2 bottom-full pointer-events-none z-20 w-0 h-0 flex items-end justify-center -mb-2">
-                      <div className="animate-fly-fade">
-                        <div className="animate-[flyXLeft_2.5s_ease-out_forwards]">
-                          <div className="animate-[flyYArc_2.5s_forwards]">
-                            <div className="animate-[flyRotateLeft_2.5s_forwards]">
-                              <svg className="w-8 h-8 md:w-10 md:h-10 text-gray-800 drop-shadow-md" viewBox="0 0 64 64" fill="currentColor">
-                                <path d="M32 10V2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                                <circle cx="32" cy="14" r="4" />
-                                <path d="M32 18c-3 0-5 6-5 14s2 18 5 18 5-10 5-18-2-14-5-14z" />
-                                <path d="M28 26C14 16 2 22 6 34c2.5 7.5 14 2 22-5z" opacity="0.5" />
-                                <path d="M36 26c14-10 26-4 22 8-2.5 7.5-14 2-22-5z" opacity="0.5" />
-                                <path d="M27 22l-12-8m12 12l-14 2m13 10l-10 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
-                                <path d="M37 22l12-8m-12 12l14 2m-13 10l10 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
-                              </svg>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </span>s. <br />Right in your pocket.
+                  Smart blood smear analysis. <br />Right in your pocket.
                 </h1>
 
                 <p className="text-base md:text-lg text-gray-500 max-w-2xl font-light leading-relaxed mb-10">
