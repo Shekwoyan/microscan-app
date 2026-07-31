@@ -605,7 +605,20 @@ export default function App() {
         {/* VIEW 3: DOWNLOADS PAGE                                    */}
         {/* ========================================================= */}
         {view === 'instructions' && (
-          <div className="flex-1 max-w-4xl mx-auto w-full px-6 py-24 md:px-16 animate-apple-in">
+          <div className="flex-1 max-w-4xl mx-auto w-full px-6 py-6 md:py-24 md:px-16 animate-apple-in">
+            {/* Mobile Elegant Back Arrow */}
+            <div className="md:hidden mb-6 -ml-2">
+              <button
+                onClick={() => { setView('landing'); }}
+                className="flex items-center gap-1 text-gray-500 font-medium text-sm hover:text-black transition-colors"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+                </svg>
+                Back
+              </button>
+            </div>
+            
             <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-gray-900 mb-6">
               Instructions & System Capabilities
             </h1>
