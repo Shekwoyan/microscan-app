@@ -610,24 +610,31 @@ export default function App() {
               <section className="scroll-reveal">
                 <h2 className="text-xl font-bold mb-6 text-gray-900 border-b border-gray-100 pb-4">How to Use the System</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-                    <span className="text-3xl mb-4 block">🔬</span>
+                  <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1 group">
+                    <svg className="w-8 h-8 text-[#1D1D1F] mb-4 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                    </svg>
                     <h3 className="font-bold text-gray-900 mb-2">1. Prepare the Slide</h3>
-                    <p className="text-sm text-gray-500 leading-relaxed">
+                    <p className="text-sm text-gray-500 leading-relaxed group-hover:text-gray-700 transition-colors">
                       Prepare a thin blood smear and stain it using standard Giemsa protocol. The AI expects a bright, properly stained image.
                     </p>
                   </div>
-                  <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-                    <span className="text-3xl mb-4 block">📸</span>
+                  <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1 group">
+                    <svg className="w-8 h-8 text-[#1D1D1F] mb-4 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
                     <h3 className="font-bold text-gray-900 mb-2">2. Capture Image</h3>
-                    <p className="text-sm text-gray-500 leading-relaxed">
+                    <p className="text-sm text-gray-500 leading-relaxed group-hover:text-gray-700 transition-colors">
                       Use a microscope with at least 1000x magnification (oil immersion). Snap a clear, well-lit photo of the cell structures.
                     </p>
                   </div>
-                  <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-                    <span className="text-3xl mb-4 block">🧠</span>
+                  <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1 group">
+                    <svg className="w-8 h-8 text-[#1D1D1F] mb-4 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                    </svg>
                     <h3 className="font-bold text-gray-900 mb-2">3. Run Analysis</h3>
-                    <p className="text-sm text-gray-500 leading-relaxed">
+                    <p className="text-sm text-gray-500 leading-relaxed group-hover:text-gray-700 transition-colors">
                       Upload the image using the scanner tool. The system will process it locally and return a confidence score instantly.
                     </p>
                   </div>
@@ -639,23 +646,29 @@ export default function App() {
                 <section className="scroll-reveal">
                   <h2 className="text-xl font-bold mb-6 text-gray-900 border-b border-gray-100 pb-4">System Strengths</h2>
                   <ul className="space-y-4">
-                    <li className="flex gap-3">
-                      <svg className="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
-                      <div>
+                    <li className="flex gap-4 p-3 -mx-3 rounded-xl hover:bg-gray-50 transition-colors group">
+                      <svg className="w-6 h-6 text-green-500 shrink-0 mt-0.5 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M18.364 5.636a9 9 0 010 12.728m0 0l-2.829-2.829m2.829 2.829L21 21M15.536 8.464a5 5 0 010 7.072m0 0l-2.829-2.829m-4.243 2.829a4.978 4.978 0 01-1.414-2.83m-1.414 5.658a9 9 0 01-2.167-9.238m7.824 2.168a3 3 0 10-4.243-4.243" />
+                      </svg>
+                      <div className="transition-transform duration-300 group-hover:translate-x-1">
                         <span className="block font-medium text-gray-900 text-sm mb-1">Completely Offline</span>
                         <span className="block text-sm text-gray-500">The entire inference engine runs locally, making it ideal for remote clinics with no internet.</span>
                       </div>
                     </li>
-                    <li className="flex gap-3">
-                      <svg className="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
-                      <div>
+                    <li className="flex gap-4 p-3 -mx-3 rounded-xl hover:bg-gray-50 transition-colors group">
+                      <svg className="w-6 h-6 text-green-500 shrink-0 mt-0.5 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                      </svg>
+                      <div className="transition-transform duration-300 group-hover:translate-x-1">
                         <span className="block font-medium text-gray-900 text-sm mb-1">Privacy First</span>
                         <span className="block text-sm text-gray-500">No patient images are ever stored or sent to a remote server.</span>
                       </div>
                     </li>
-                    <li className="flex gap-3">
-                      <svg className="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
-                      <div>
+                    <li className="flex gap-4 p-3 -mx-3 rounded-xl hover:bg-gray-50 transition-colors group">
+                      <svg className="w-6 h-6 text-green-500 shrink-0 mt-0.5 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                      <div className="transition-transform duration-300 group-hover:translate-x-1">
                         <span className="block font-medium text-gray-900 text-sm mb-1">High Speed</span>
                         <span className="block text-sm text-gray-500">The optimized backbone provides near-instant results even on low-end hardware.</span>
                       </div>
@@ -667,23 +680,29 @@ export default function App() {
                 <section className="scroll-reveal">
                   <h2 className="text-xl font-bold mb-6 text-gray-900 border-b border-gray-100 pb-4">System Limitations</h2>
                   <ul className="space-y-4">
-                    <li className="flex gap-3">
-                      <svg className="w-5 h-5 text-red-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
-                      <div>
+                    <li className="flex gap-4 p-3 -mx-3 rounded-xl hover:bg-gray-50 transition-colors group">
+                      <svg className="w-6 h-6 text-red-500 shrink-0 mt-0.5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                      </svg>
+                      <div className="transition-transform duration-300 group-hover:translate-x-1">
                         <span className="block font-medium text-gray-900 text-sm mb-1">Not a Definitive Diagnosis</span>
                         <span className="block text-sm text-gray-500">This is a screening tool. It does not replace the professional judgment of a trained microscopist.</span>
                       </div>
                     </li>
-                    <li className="flex gap-3">
-                      <svg className="w-5 h-5 text-red-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
-                      <div>
+                    <li className="flex gap-4 p-3 -mx-3 rounded-xl hover:bg-gray-50 transition-colors group">
+                      <svg className="w-6 h-6 text-red-500 shrink-0 mt-0.5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                      </svg>
+                      <div className="transition-transform duration-300 group-hover:translate-x-1">
                         <span className="block font-medium text-gray-900 text-sm mb-1">Requires High Magnification</span>
                         <span className="block text-sm text-gray-500">The model was trained on 1000x oil-immersion images. Lower magnifications will result in poor accuracy.</span>
                       </div>
                     </li>
-                    <li className="flex gap-3">
-                      <svg className="w-5 h-5 text-red-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
-                      <div>
+                    <li className="flex gap-4 p-3 -mx-3 rounded-xl hover:bg-gray-50 transition-colors group">
+                      <svg className="w-6 h-6 text-red-500 shrink-0 mt-0.5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                      </svg>
+                      <div className="transition-transform duration-300 group-hover:translate-x-1">
                         <span className="block font-medium text-gray-900 text-sm mb-1">Color Sensitivity</span>
                         <span className="block text-sm text-gray-500">Poorly stained slides or improper white balance on the camera can confuse the color gatekeeper.</span>
                       </div>
