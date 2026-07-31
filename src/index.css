@@ -44,14 +44,14 @@ input[type="file"],
 }
 
 @keyframes flyYArc {
-  0% { transform: translateY(0); animation-timing-function: ease-out; }
-  50% { transform: translateY(15vh); animation-timing-function: ease-in-out; }
+  0% { transform: translateY(100vh); animation-timing-function: ease-out; }
+  75% { transform: translateY(-5vh); animation-timing-function: ease-in-out; }
   100% { transform: translateY(0); }
 }
 
 @keyframes flyRotateRight {
-  0% { transform: rotate(-100deg); }
-  50% { transform: rotate(-45deg); }
+  0% { transform: rotate(-60deg); }
+  75% { transform: rotate(-15deg); }
   100% { transform: rotate(0deg); }
 }
 
