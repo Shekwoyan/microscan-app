@@ -162,6 +162,14 @@ export default function App() {
     }
   };
 
+  const handleInstructionScroll = (e) => {
+    if (window.innerWidth >= 768) return;
+    const container = e.target;
+    const cardWidth = window.innerWidth * 0.75 + 24; // 75vw + 24px gap
+    const index = Math.round(container.scrollLeft / cardWidth);
+    setActiveCard(5 + index);
+  };
+
   return (
     <div className="min-h-screen bg-[#FBFBFD] text-[#1D1D1F] antialiased selection:bg-[#1D1D1F] selection:text-white flex flex-col justify-between">
 
@@ -183,7 +191,7 @@ export default function App() {
         <div className="hidden md:flex items-center gap-10 text-xs font-medium text-gray-500">
           <a
             href="#instructions"
-            onClick={(e) => { e.preventDefault(); setView('instructions'); }}
+            onClick={(e) => { e.preventDefault(); setView('instructions'); setActiveCard(5); }}
             className="hover:text-black transition-colors duration-200"
           >
             Instructions
@@ -251,7 +259,7 @@ export default function App() {
         <div className={`absolute top-full left-0 w-full bg-[#FBFBFD]/95 backdrop-blur-md border-b border-gray-100 transition-all duration-300 md:hidden overflow-hidden flex flex-col items-center shadow-sm ${isMobileMenuOpen ? 'max-h-56 py-5 opacity-100' : 'max-h-0 py-0 opacity-0 pointer-events-none'}`}>
           <a
             href="#instructions"
-            onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); setView('instructions'); }}
+            onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); setView('instructions'); setActiveCard(5); }}
             className="hover:text-black text-sm font-medium text-gray-600 transition-colors duration-200 mb-4"
           >
             Instructions
@@ -609,7 +617,7 @@ export default function App() {
               {/* How to use */}
               <section className="scroll-reveal">
                 <h2 className="text-xl font-bold mb-6 text-gray-900 border-b border-gray-100 pb-4">How to Use the System</h2>
-                <div className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-6 md:grid md:grid-cols-3 md:gap-8 pb-8 -mx-6 px-6 md:mx-0 md:px-0 md:pb-0">
+                <div className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-6 md:grid md:grid-cols-3 md:gap-8 pb-8 -mx-6 px-6 md:mx-0 md:px-0 md:pb-0" onScroll={handleInstructionScroll}>
                   <div 
                     onClick={() => setActiveCard(activeCard === 5 ? null : 5)}
                     className={`w-[75vw] shrink-0 snap-center md:w-auto group cursor-pointer bg-white border border-gray-100 p-8 rounded-xl shadow-xs relative flex flex-col items-start h-full select-none transition-all duration-200 ${activeCard === 5 ? 'shadow-xl border-gray-200 scale-[1.02] z-10' : 'md:hover:shadow-md md:hover:border-gray-200 md:hover:scale-[1.02] md:hover:z-10'}`} 
