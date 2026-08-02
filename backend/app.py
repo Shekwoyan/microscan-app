@@ -48,27 +48,6 @@ except Exception as e:
     print(f"Error loading model: {e}")
     model = None
 
-def is_likely_blood_smear(image: Image.Image) -> bool:
-    if image.mode != "RGB":
-        image = image.convert("RGB")
-    # Resize to a tiny square for ultra-fast color averaging
-    small_img = image.resize((50, 50))
-    arr = np.array(small_img)
-    
-    # Calculate average Red, Green, and Blue across the whole image
-    avg_color = np.mean(arr, axis=(0, 1))
-    r, g, b = avg_color[0], avg_color[1], avg_color[2]
-    
-    # Filter 1: Too Dark. Microscope slides are brightly backlit.
-    if r < 60 and g < 60 and b < 60:
-        return False
-        
-    # Filter 2: Too Green. Giemsa stains are pink/purple/blue, never predominantly green.
-    if g > r + 30 and g > b + 30:
-        return False
-        
-    return True
-
 @app.post("/predict-smear")
 async def predict_smear(image: UploadFile = File(...)):
     if model is None:
@@ -81,10 +60,6 @@ async def predict_smear(image: UploadFile = File(...)):
         # Read the image file using Pillow
         image_bytes = await image.read()
         pil_image = Image.open(io.BytesIO(image_bytes))
-        
-        # Run the Hacky Color Gatekeeper (Optional, can be removed if OpenCV pipeline handles it better)
-        if not is_likely_blood_smear(pil_image):
-            raise HTTPException(status_code=400, detail="Image rejected: Color profile does not match a Giemsa-stained blood smear.")
         
         # Pass the image to our preprocess and analysis logic
         result = analyze_smear(pil_image, model)
